@@ -1,0 +1,2402 @@
+<!DOCTYPE html>
+<html lang="ru" data-lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OES — Платформа безопасных экзаменов</title>
+  <meta name="description" content="Единственная Desktop-платформа в СНГ с OS-level прокторингом. 4M+ экзаменов, 7 лет, 10 000 одновременных сессий.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" as="font" type="font/woff2" href="fonts/Inter/InterVariable.woff2" crossorigin>
+  <style>
+    html, body { background: #07090F; }
+    body { opacity: 0; transition: opacity 0.35s ease; }
+    body.is-loaded { opacity: 1; }
+  </style>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════════════ -->
+<nav class="nav nav-hero nav--dark" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+
+      <a href="index.html" class="nav-logo" aria-label="OES">
+        <img src="assets/logo.svg" alt="OES" class="nav-logo-img">
+      </a>
+
+      <ul class="nav-menu">
+        <li class="nav-dropdown">
+          <a class="nav-link" href="#" data-t="nav-solutions">Решения</a>
+          <div class="nav-dropdown-menu">
+            <a class="nav-dropdown-item" href="#desktop" data-t="sol-desktop">Desktop ПО</a>
+            <a class="nav-dropdown-item" href="#ai" data-t="sol-sync">AI-мониторинг</a>
+            <a class="nav-dropdown-item" href="#infosec" data-t="sol-onpremise">On-Premise</a>
+          </div>
+        </li>
+        <li><a class="nav-link" href="about.html" data-t="nav-about">О системе</a></li>
+        <li><a class="nav-link" href="#infosec" data-t="nav-security">Безопасность</a></li>
+        <li class="nav-dropdown">
+          <a class="nav-link" href="#" data-t="nav-who">Для кого</a>
+          <div class="nav-dropdown-menu">
+            <a class="nav-dropdown-item" href="#scale" data-t="who-gov">Государственные органы</a>
+            <a class="nav-dropdown-item" href="#scale" data-t="who-uni">Университеты</a>
+            <a class="nav-dropdown-item" href="#roadmap" data-t="who-hr">HR и Enterprise</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="lang-select" data-current="ru">
+          <button class="lang-select-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+            <span class="lang-select-current">RU</span>
+            <svg class="lang-select-arrow" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="lang-select-list" role="listbox">
+            <li class="lang-select-option" role="option" data-lang="kz">KZ</li>
+            <li class="lang-select-option" role="option" data-lang="ru" aria-selected="true">RU</li>
+            <li class="lang-select-option" role="option" data-lang="en">EN</li>
+          </ul>
+        </div>
+        <a href="#demo" class="btn btn-primary" data-t="nav-demo">Получить демо</a>
+      </div>
+
+      <button class="nav-burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <a class="nav-link" href="#threats" data-t="nav-solutions">Решения</a>
+  <a class="nav-link" href="about.html" data-t="nav-about">О системе</a>
+  <a class="nav-link" href="#infosec" data-t="nav-security">Безопасность</a>
+  <a class="nav-link" href="#scale" data-t="nav-who">Для кого</a>
+  <div class="lang-select" data-current="ru" style="margin-top:8px">
+    <button class="lang-select-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+      <span class="lang-select-current">RU</span>
+      <svg class="lang-select-arrow" viewBox="0 0 12 12" width="10" height="10" aria-hidden="true"><path d="M2 4.5l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <ul class="lang-select-list" role="listbox">
+      <li class="lang-select-option" role="option" data-lang="kz">KZ</li>
+      <li class="lang-select-option" role="option" data-lang="ru" aria-selected="true">RU</li>
+      <li class="lang-select-option" role="option" data-lang="en">EN</li>
+    </ul>
+  </div>
+  <a href="#demo" class="btn btn-primary" style="margin-top:8px;justify-content:center" data-t="nav-demo">Получить демо</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero-topo" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="none" class="hero-topo-svg">
+      <defs>
+        <linearGradient id="hero-topo-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0"/>
+          <stop offset="50%"  stop-color="#FFFFFF" stop-opacity="0.08"/>
+          <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.05"/>
+        </linearGradient>
+        <linearGradient id="hero-topo-grad-2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.06"/>
+        </linearGradient>
+        <radialGradient id="hero-topo-vignette" cx="50%" cy="50%" r="60%">
+          <stop offset="0%"   stop-color="#070912" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#070912" stop-opacity="0.85"/>
+        </radialGradient>
+      </defs>
+      <g class="hero-topo-lines" stroke="url(#hero-topo-grad)" fill="none" stroke-width="1.1">
+        <path d="M-40,140 Q200,80  440,130 T880,100 T1320,130 T1480,90"  opacity="0.45"/>
+        <path d="M-40,200 Q220,150 460,180 T900,160 T1340,180 T1480,150" opacity="0.55"/>
+        <path d="M-40,260 Q240,210 480,240 T920,220 T1360,240 T1480,210" opacity="0.65"/>
+        <path d="M-40,320 Q260,270 500,300 T940,280 T1380,300 T1480,270" opacity="0.75"/>
+        <path d="M-40,380 Q280,330 520,360 T960,340 T1400,360 T1480,330" opacity="0.85"/>
+        <path d="M-40,440 Q300,400 540,420 T980,400 T1420,420 T1480,400" opacity="0.95"/>
+        <path d="M-40,500 Q320,470 560,480 T1000,460 T1440,480 T1480,470" opacity="0.95"/>
+        <path d="M-40,560 Q340,540 580,540 T1020,520 T1460,540 T1480,540" opacity="0.85"/>
+        <path d="M-40,620 Q360,610 600,600 T1040,580 T1480,600 T1480,610" opacity="0.75"/>
+        <path d="M-40,680 Q380,680 620,660 T1060,640 T1480,660 T1480,680" opacity="0.65"/>
+        <path d="M-40,740 Q400,750 640,720 T1080,700 T1480,720 T1480,750" opacity="0.55"/>
+        <path d="M-40,800 Q420,820 660,780 T1100,760 T1480,780 T1480,820" opacity="0.45"/>
+      </g>
+      <rect width="1440" height="900" fill="url(#hero-topo-vignette)" pointer-events="none"/>
+    </svg>
+  </div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+
+  <div class="container hero-body">
+
+    <!-- Left -->
+    <div class="hero-left">
+      <div class="hero-chips">
+        <div class="hero-chip">
+          <span class="hero-chip-dot"></span>
+          <span class="hero-chip-text" data-t="hero-chip-1">Enterprise</span>
+        </div>
+        <div class="hero-chip">
+          <span class="hero-chip-dot"></span>
+          <span class="hero-chip-text" data-t="hero-chip-2">GovTech</span>
+        </div>
+        <div class="hero-chip">
+          <span class="hero-chip-dot"></span>
+          <span class="hero-chip-text" data-t="hero-chip-3">Secure Exam Platform</span>
+        </div>
+      </div>
+
+      <h1 class="hero-title"><span class="hero-title-line">Платформа безопасных</span><span class="hero-title-line">экзаменов</span></h1>
+
+      <p class="hero-sub" data-t="hero-subtitle">OES обеспечивает контроль онлайн-экзаменов и аттестации с использованием AI-мониторинга, контроля экзаменационной среды и OS-level защиты в режиме реального времени.</p>
+
+      <div class="hero-cta">
+        <a href="#demo" class="btn btn-primary" data-t="hero-btn-demo">Получить демо</a>
+        <a href="about.html" class="btn btn-outline-dark" data-t="hero-btn-watch">Как работает →</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">4M<span style="color:var(--accent)">+</span></div>
+          <div class="hero-stat-label" data-t="chip-exams">экзаменов</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">10K</div>
+          <div class="hero-stat-label" data-t="chip-concurrent">одновременно</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">7</div>
+          <div class="hero-stat-label" data-t="chip-years">лет</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">52 <span style="font-size:0.6em;color:var(--text-on-dark-2)">кБ/с</span></div>
+          <div class="hero-stat-label" data-t="chip-bandwidth">минимум</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right — Thematic illustration: exam in progress under AI surveillance -->
+    <div class="hero-right">
+      <div class="exam-stage" id="exam-stage">
+
+        <!-- Ambient ring pulses -->
+        <div class="exam-stage-rings" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+
+        <!-- Floating protection chips with tooltips -->
+        <div class="prot-chip prot-chip--tl" data-chip="01">
+          <div class="prot-chip-pulse"></div>
+          <div class="prot-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="prot-chip-name">Kiosk Mode</div>
+          <div class="prot-chip-tip">
+            <div class="prot-chip-tip-title">OS-level lockdown</div>
+            <div class="prot-chip-tip-body">Полная блокировка переключения окон, буфера обмена и системных шорткатов. Студент не может свернуть приложение, открыть второе окно или скопировать вопрос.</div>
+            <div class="prot-chip-tip-meta">
+              <span class="prot-chip-tip-stat">Активируется за 0.4с</span>
+              <span class="prot-chip-tip-tag">Windows · macOS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prot-chip prot-chip--tr" data-chip="02">
+          <div class="prot-chip-pulse"></div>
+          <div class="prot-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="16" height="16"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="14" x2="22" y2="14"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="14" x2="4" y2="14"/></svg>
+          </div>
+          <div class="prot-chip-name">AI Behavioral</div>
+          <div class="prot-chip-tip">
+            <div class="prot-chip-tip-title">40+ категорий нарушений</div>
+            <div class="prot-chip-tip-body">Анализ взгляда, движений лица, шумов, переключений внимания. Детекция AI-ассистентов на втором мониторе, дипфейк-камер и подсказчиков в комнате.</div>
+            <div class="prot-chip-tip-meta">
+              <span class="prot-chip-tip-stat">Real-time GPU inference</span>
+              <span class="prot-chip-tip-tag">40+ типов флагов</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prot-chip prot-chip--ml" data-chip="03">
+          <div class="prot-chip-pulse"></div>
+          <div class="prot-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="16" height="16"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="prot-chip-name">RAM Monitor</div>
+          <div class="prot-chip-tip">
+            <div class="prot-chip-tip-title">Принудительный kill процессов</div>
+            <div class="prot-chip-tip-body">Сканирует оперативную память на запущенные AnyDesk, TeamViewer, OBS, виртуальные камеры. Завершает процесс до загрузки экзамена.</div>
+            <div class="prot-chip-tip-meta">
+              <span class="prot-chip-tip-stat">200+ сигнатур</span>
+              <span class="prot-chip-tip-tag">Auto-kill</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prot-chip prot-chip--mr" data-chip="04">
+          <div class="prot-chip-pulse"></div>
+          <div class="prot-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="16" height="16"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="10" x2="6" y2="14"/><line x1="10" y1="10" x2="10" y2="14"/><line x1="14" y1="10" x2="14" y2="14"/><line x1="18" y1="10" x2="18" y2="14"/></svg>
+          </div>
+          <div class="prot-chip-name">Hardware ID</div>
+          <div class="prot-chip-tip">
+            <div class="prot-chip-tip-title">MAC + HDD сверка</div>
+            <div class="prot-chip-tip-body">Привязка экзаменационной сессии к физической машине через хэш MAC-адреса и серийного номера диска. Подмена устройства невозможна.</div>
+            <div class="prot-chip-tip-meta">
+              <span class="prot-chip-tip-stat">SHA-256 fingerprint</span>
+              <span class="prot-chip-tip-tag">Hardware bound</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prot-chip prot-chip--bl" data-chip="05">
+          <div class="prot-chip-pulse"></div>
+          <div class="prot-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <div class="prot-chip-name">VM Detection</div>
+          <div class="prot-chip-tip">
+            <div class="prot-chip-tip-title">Сканирование сигнатур</div>
+            <div class="prot-chip-tip-body">Распознаёт виртуальные машины VMware, VirtualBox, Parallels, Hyper-V по железным флагам ядра. Экзамен не стартует в VM.</div>
+            <div class="prot-chip-tip-meta">
+              <span class="prot-chip-tip-stat">CPUID + ACPI checks</span>
+              <span class="prot-chip-tip-tag">Все гипервизоры</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="prot-chip prot-chip--br" data-chip="06">
+          <div class="prot-chip-pulse"></div>
+          <div class="prot-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="16" height="16"><rect x="2" y="4" width="20" height="13" rx="2"/><line x1="2" y1="21" x2="22" y2="21"/></svg>
+          </div>
+          <div class="prot-chip-name">Display Guard</div>
+          <div class="prot-chip-tip">
+            <div class="prot-chip-tip-title">Блок второго монитора</div>
+            <div class="prot-chip-tip-body">Запрос на отключение всех внешних дисплеев перед стартом. Если HDMI/DisplayPort подключён после начала — сессия флагуется.</div>
+            <div class="prot-chip-tip-meta">
+              <span class="prot-chip-tip-stat">EDID мониторинг</span>
+              <span class="prot-chip-tip-tag">Real-time</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Central exam mockup -->
+        <div class="exam-mockup">
+          <div class="exam-mockup-bar">
+            <div class="exam-mockup-dots"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+            <div class="exam-mockup-url">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="10" height="10"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              exam.oes.kz/session/<span class="exam-mockup-url-id">8a7f-c3e9</span>
+            </div>
+            <div class="exam-mockup-live">
+              <span class="exam-mockup-live-dot"></span>Live
+            </div>
+          </div>
+
+          <div class="exam-mockup-body">
+
+            <!-- Webcam overlay top-right -->
+            <div class="exam-webcam">
+              <div class="exam-webcam-frame">
+                <div class="exam-webcam-scan"></div>
+                <div class="exam-webcam-face">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="32" height="32"><circle cx="12" cy="9" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+                </div>
+                <div class="exam-webcam-corner exam-webcam-corner--tl"></div>
+                <div class="exam-webcam-corner exam-webcam-corner--tr"></div>
+                <div class="exam-webcam-corner exam-webcam-corner--bl"></div>
+                <div class="exam-webcam-corner exam-webcam-corner--br"></div>
+                <div class="exam-webcam-rec"><span class="exam-webcam-rec-dot"></span>REC</div>
+              </div>
+              <div class="exam-webcam-meta">
+                <div class="exam-webcam-meta-line"><span class="exam-webcam-meta-dot ok"></span>Face match · 99.2%</div>
+                <div class="exam-webcam-meta-line"><span class="exam-webcam-meta-dot ok"></span>Gaze: on screen</div>
+              </div>
+            </div>
+
+            <!-- Question card -->
+            <div class="exam-question">
+              <div class="exam-question-meta">
+                <span class="exam-question-num">Вопрос 7 / 25</span>
+                <span class="exam-question-time">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="11" height="11"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  14:23
+                </span>
+              </div>
+              <div class="exam-question-text">Какой механизм блокирует удалённый доступ во время экзамена?</div>
+              <div class="exam-question-options">
+                <div class="exam-opt">
+                  <span class="exam-opt-radio"></span>
+                  <span class="exam-opt-label"><span class="exam-opt-letter">A</span> Анализ DNS-трафика</span>
+                </div>
+                <div class="exam-opt exam-opt--selected">
+                  <span class="exam-opt-radio"></span>
+                  <span class="exam-opt-label"><span class="exam-opt-letter">B</span> RAM Monitor — kill процесса<span class="exam-opt-cursor">|</span></span>
+                </div>
+                <div class="exam-opt">
+                  <span class="exam-opt-radio"></span>
+                  <span class="exam-opt-label"><span class="exam-opt-letter">C</span> Перезагрузка сессии</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Footer status strip -->
+          <div class="exam-mockup-footer">
+            <div class="exam-status">
+              <span class="exam-status-dot"></span>
+              <span class="exam-status-text">AI мониторит · 6 / 6 защит активны</span>
+            </div>
+            <div class="exam-trust">
+              <span class="exam-trust-label">TRUSTSCORE</span>
+              <div class="exam-trust-bar"><div class="exam-trust-fill" id="trust-fill"></div></div>
+              <span class="exam-trust-val">94<small>%</small></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /hero-body -->
+
+  <!-- Ticker — pinned to bottom of hero -->
+  <div class="ticker-strip">
+    <div class="marquee-track">
+      <div class="marquee-item" data-tooltip="Национальный центр тестирования — основной государственный клиент">КазТест (НСТ)<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Проведено за 7 лет работы платформы">4 000 000+ экзаменов<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Единое национальное тестирование абитуриентов Казахстана">ЕНТ · 293K абитуриентов<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Международный IT-университет, Алматы">Astana IT University<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Аттестация сотрудников силовых структур РК">МВД Республики Казахстан<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Все данные хранятся на серверах клиента, никакого внешнего доступа">On-Premise · Данные у вас<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Нативное приложение для обеих платформ с OS-level защитой">Windows 7–11 + macOS<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Резидент технопарка Astana Hub">Astana Hub Resident<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Корпоративный университет BI Group">BI University<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Аккредитация по 5 протоколам информационной безопасности РК">5 протоколов ИБ РК<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Корпоративное обучение и аттестация, Россия">Промсвязьбанк (РФ)<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Максимальное число одновременных сессий без деградации">10 000 одновременно<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Национальный центр тестирования — основной государственный клиент">КазТест (НСТ)<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Проведено за 7 лет работы платформы">4 000 000+ экзаменов<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Единое национальное тестирование абитуриентов Казахстана">ЕНТ · 293K абитуриентов<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Международный IT-университет, Алматы">Astana IT University<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Аттестация сотрудников силовых структур РК">МВД Республики Казахстан<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Все данные хранятся на серверах клиента, никакого внешнего доступа">On-Premise · Данные у вас<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Нативное приложение для обеих платформ с OS-level защитой">Windows 7–11 + macOS<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Резидент технопарка Astana Hub">Astana Hub Resident<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Корпоративный университет BI Group">BI University<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Аккредитация по 5 протоколам информационной безопасности РК">5 протоколов ИБ РК<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Корпоративное обучение и аттестация, Россия">Промсвязьбанк (РФ)<div class="marquee-sep"></div></div>
+      <div class="marquee-item" data-tooltip="Максимальное число одновременных сессий без деградации">10 000 одновременно<div class="marquee-sep"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ABOUT SYSTEM
+════════════════════════════════════════════════════════ -->
+<section class="about-system-section sec-light" id="about-system">
+
+  <!-- Block 1: Split layout — description + audience -->
+  <div class="container">
+    <div class="about-split">
+
+      <div class="about-split-left reveal">
+        <div class="label" data-t="about-sys-label">О системе</div>
+        <h2 data-t-html="about-sys-title">Платформа контроля<br>экзаменационной среды</h2>
+        <p data-t="about-sys-desc">Платформа онлайн-прокторинга и контроля экзаменационной среды для университетов, государственных структур и корпоративного сектора. Десктоп-клиент работает на уровне операционной системы — от запуска приложения до выгрузки видеоархива. Каждое нарушение фиксируется с таймкодом в юридически защищённый отчёт, готовый к разбору в апелляционной комиссии или в суде.</p>
+        <div class="about-sys-platforms-group">
+          <div class="about-split-label" data-t="about-sys-compat">Совместимость:</div>
+          <div class="about-sys-platforms">
+            <div class="about-sys-platform-chip">Windows 7–11</div>
+            <div class="about-sys-platform-chip">macOS Intel</div>
+            <div class="about-sys-platform-chip">macOS Apple Silicon</div>
+            <div class="about-sys-platform-chip">Moodle · Platonus · Hero · REST API</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-split-right reveal-right">
+        <div class="about-split-label" data-t="about-sys-for">Для кого:</div>
+        <div class="about-seg-stack">
+
+          <div class="about-seg-card">
+            <div class="about-seg-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="about-seg-body">
+              <div class="about-seg-name" data-t="seg-gov">Государственные органы</div>
+              <div class="about-seg-desc" data-t="seg-gov-desc">Национальные экзамены, аттестация госслужащих, допуск к объектам</div>
+            </div>
+          </div>
+
+          <div class="about-seg-card">
+            <div class="about-seg-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="about-seg-body">
+              <div class="about-seg-name" data-t="seg-uni">Университеты</div>
+              <div class="about-seg-desc" data-t="seg-uni-desc">Вступительные экзамены, сессии, дистанционное обучение</div>
+            </div>
+          </div>
+
+          <div class="about-seg-card">
+            <div class="about-seg-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+            </div>
+            <div class="about-seg-body">
+              <div class="about-seg-name" data-t="seg-corp">Корпоративный сектор</div>
+              <div class="about-seg-desc" data-t="seg-corp-desc">HR-аттестации, сертификации, корпоративное обучение</div>
+            </div>
+          </div>
+
+          <div class="about-seg-card">
+            <div class="about-seg-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="about-seg-body">
+              <div class="about-seg-name" data-t="seg-cert">Сертификационные центры</div>
+              <div class="about-seg-desc" data-t="seg-cert-desc">Профессиональные квалификации, подтверждение компетенций</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Block 2: Full-width — система фиксирует (Built for everyone style) -->
+  <div class="about-captures-section">
+    <div class="container">
+
+      <div class="about-captures-head reveal">
+        <div class="label" data-t="about-sys-records-title">Система фиксирует</div>
+        <h2 data-t="about-sys-h2">Контроль на каждом уровне</h2>
+        <p class="about-captures-sub" data-t="about-sys-sub">6 каналов работают параллельно во время экзамена. На выходе — единый таймлайн нарушений с уровнем доверия к результату.</p>
+      </div>
+
+      <div class="bento-grid">
+
+        <!-- Featured: Видео и аудио -->
+        <a href="#" class="bento-card bento-card--featured reveal">
+          <div class="bento-featured-head">
+            <div class="bento-icon bento-icon--accent">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="18" height="18"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            </div>
+            <div class="bento-featured-text">
+              <h3 class="bento-card-title" data-t="rec-1">Видео и аудио</h3>
+              <p class="bento-card-desc">Непрерывная запись с камеры и микрофона на протяжении всей сессии. AI размечает фоновые шумы, голосовые подсказки и посторонние звуки в комнате.</p>
+            </div>
+            <div class="bento-live">
+              <span class="bento-live-dot"></span>
+              <span>REC</span>
+              <span class="bento-live-timer" id="bento-rec-timer">00:00</span>
+            </div>
+          </div>
+
+          <!-- Dictaphone-style LCD screen with glowing waveform -->
+          <div class="bento-wave" aria-hidden="true">
+            <div class="bento-wave-grid"></div>
+            <div class="bento-wave-axis"></div>
+            <div class="bento-wave-timeline">
+              <span>−10s</span><span>−5s</span><span>NOW</span>
+            </div>
+            <div class="bento-wave-track">
+              <span style="--h:24%"></span><span style="--h:50%"></span><span style="--h:16%"></span><span style="--h:62%"></span><span style="--h:30%"></span><span style="--h:42%"></span><span style="--h:14%"></span><span style="--h:72%"></span><span style="--h:20%"></span><span style="--h:36%"></span><span style="--h:56%"></span><span style="--h:24%"></span><span style="--h:8%"></span><span style="--h:60%"></span><span style="--h:28%"></span><span style="--h:40%"></span><span style="--h:16%"></span><span style="--h:68%"></span><span style="--h:32%"></span><span style="--h:20%"></span><span style="--h:48%"></span><span style="--h:12%"></span><span style="--h:76%"></span><span style="--h:34%"></span><span style="--h:24%"></span><span style="--h:52%"></span><span style="--h:16%"></span><span style="--h:60%"></span><span style="--h:28%"></span><span style="--h:36%"></span><span style="--h:64%"></span><span style="--h:18%"></span><span style="--h:30%"></span><span style="--h:54%"></span><span style="--h:22%"></span><span style="--h:8%"></span><span style="--h:72%"></span><span style="--h:32%"></span><span style="--h:46%"></span><span style="--h:14%"></span><span style="--h:38%"></span><span style="--h:60%"></span><span style="--h:26%"></span><span style="--h:18%"></span><span style="--h:50%"></span><span style="--h:10%"></span><span style="--h:68%"></span><span style="--h:32%"></span><span style="--h:42%"></span><span style="--h:20%"></span>
+              <!-- duplicate for seamless loop -->
+              <span style="--h:24%"></span><span style="--h:50%"></span><span style="--h:16%"></span><span style="--h:62%"></span><span style="--h:30%"></span><span style="--h:42%"></span><span style="--h:14%"></span><span style="--h:72%"></span><span style="--h:20%"></span><span style="--h:36%"></span><span style="--h:56%"></span><span style="--h:24%"></span><span style="--h:8%"></span><span style="--h:60%"></span><span style="--h:28%"></span><span style="--h:40%"></span><span style="--h:16%"></span><span style="--h:68%"></span><span style="--h:32%"></span><span style="--h:20%"></span><span style="--h:48%"></span><span style="--h:12%"></span><span style="--h:76%"></span><span style="--h:34%"></span><span style="--h:24%"></span><span style="--h:52%"></span><span style="--h:16%"></span><span style="--h:60%"></span><span style="--h:28%"></span><span style="--h:36%"></span><span style="--h:64%"></span><span style="--h:18%"></span><span style="--h:30%"></span><span style="--h:54%"></span><span style="--h:22%"></span><span style="--h:8%"></span><span style="--h:72%"></span><span style="--h:32%"></span><span style="--h:46%"></span><span style="--h:14%"></span><span style="--h:38%"></span><span style="--h:60%"></span><span style="--h:26%"></span><span style="--h:18%"></span><span style="--h:50%"></span><span style="--h:10%"></span><span style="--h:68%"></span><span style="--h:32%"></span><span style="--h:42%"></span><span style="--h:20%"></span>
+            </div>
+            <div class="bento-wave-cursor">
+              <div class="bento-wave-cursor-glow"></div>
+            </div>
+          </div>
+
+          <div class="bento-stats">
+            <div class="bento-stat"><span class="bento-stat-num">48</span><span class="bento-stat-unit">кГц</span></div>
+            <div class="bento-stat"><span class="bento-stat-num">1080</span><span class="bento-stat-unit">p</span></div>
+            <div class="bento-stat"><span class="bento-stat-num">∞</span><span class="bento-stat-unit">без пауз</span></div>
+          </div>
+        </a>
+
+        <!-- Medium: Экран — monitor + play (screencast) -->
+        <div class="bento-card bento-card--medium bento-card--screen reveal">
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+              <rect class="screen-frame" x="3" y="4" width="18" height="13" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+              <path class="screen-play" d="M10.5 8.5 14 11l-3.5 2.5z" fill="currentColor" stroke="none"/>
+              <line class="screen-scan" x1="4" y1="7" x2="20" y2="7" stroke-width="1.2" opacity="0"/>
+            </svg>
+          </div>
+          <h3 class="bento-card-title" data-t="rec-2">Экран пользователя</h3>
+          <p class="bento-card-desc">Полный скринкаст рабочего стола. Переключения окон, копирование и вставка, запуск сторонних приложений — фиксируются с таймкодом.</p>
+        </div>
+
+        <!-- Medium: Браузер — app window with tabs + URL bar -->
+        <div class="bento-card bento-card--medium bento-card--browser reveal">
+          <div class="bento-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <line x1="2" y1="9" x2="22" y2="9"/>
+              <circle class="b-dot b-dot-1" cx="5"   cy="6.5" r="0.9" fill="currentColor" stroke="none"/>
+              <circle class="b-dot b-dot-2" cx="7.6" cy="6.5" r="0.9" fill="currentColor" stroke="none"/>
+              <circle class="b-dot b-dot-3" cx="10.2" cy="6.5" r="0.9" fill="currentColor" stroke="none"/>
+              <rect class="b-url" x="13" y="5.5" width="7" height="2" rx="1" fill="currentColor" stroke="none" opacity="0.35"/>
+              <rect class="b-url-fill" x="13" y="5.5" width="0" height="2" rx="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h3 class="bento-card-title" data-t="rec-3">Действия в браузере</h3>
+          <p class="bento-card-desc">Открытие новых вкладок, переходы по URL, попытки выйти со страницы экзамена — каждое действие в журнале.</p>
+        </div>
+
+        <!-- Small: Флаги (literal flag icon) -->
+        <div class="bento-card bento-card--small bento-card--flag reveal">
+          <div class="bento-icon bento-icon--danger">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/></svg>
+          </div>
+          <h3 class="bento-card-title" data-t="rec-4">Нарушения и флаги</h3>
+          <p class="bento-card-desc">Таймлайн с таймкодами, снимками и приоритетом события.</p>
+        </div>
+
+        <!-- Small: Поведение — scan-eye with rotating radar arc -->
+        <div class="bento-card bento-card--small bento-card--pulse reveal">
+          <div class="bento-icon bento-icon--success">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+              <circle class="scan-pupil" cx="12" cy="12" r="1" fill="currentColor" stroke="none"/>
+              <g class="scan-arc">
+                <path d="M 18 12 A 6 6 0 0 1 14 17.4" stroke-dasharray="2 2"/>
+              </g>
+            </svg>
+          </div>
+          <h3 class="bento-card-title" data-t="rec-5">Поведенческий анализ</h3>
+          <p class="bento-card-desc">40+ паттернов: взгляд, голова, голос, переключения внимания.</p>
+        </div>
+
+        <!-- Small: События — bell with notification ping -->
+        <div class="bento-card bento-card--small bento-card--term reveal">
+          <div class="bento-icon bento-icon--warning">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <g class="bell-body">
+                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+              </g>
+              <circle class="bell-ping" cx="18.5" cy="5.5" r="2.4" fill="currentColor" stroke="none" opacity="0"/>
+            </svg>
+          </div>
+          <h3 class="bento-card-title" data-t="rec-6">События среды</h3>
+          <p class="bento-card-desc">OS-уровень: процессы, сетевые соединения, USB, виртуализация.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     THREATS
+════════════════════════════════════════════════════════ -->
+<section class="threats-section sec-light" id="threats">
+  <div class="container">
+
+    <div class="sec-head reveal">
+      <div class="label" data-t="threats-label">Threat Intelligence</div>
+      <h2 data-t-html="threats-title">Современные <span class="ai-grad">способы обмана</span> — сложнее, чем кажутся</h2>
+      <p data-t="threats-subtitle">Что используют для обхода прокторинга — и как OES закрывает каждый вектор на уровне ОС.</p>
+    </div>
+
+    <div class="threats-list">
+
+      <div class="threat-item" data-illu="ai">
+        <div class="threat-illu">
+          <svg viewBox="0 0 64 64" class="t-illu" aria-hidden="true">
+            <g transform="translate(0, 4)">
+              <path class="t-illu-stroke t-illu-bubble" d="M8 16a4 4 0 0 1 4-4h40a4 4 0 0 1 4 4v22a4 4 0 0 1-4 4H30l-8 8v-8h-10a4 4 0 0 1-4-4z" fill="none" stroke-linejoin="round"/>
+              <circle class="t-illu-stroke t-illu-dot t-illu-dot-1" cx="22" cy="27" r="2.4" fill="currentColor" stroke="none"/>
+              <circle class="t-illu-stroke t-illu-dot t-illu-dot-2" cx="32" cy="27" r="2.4" fill="currentColor" stroke="none"/>
+              <circle class="t-illu-stroke t-illu-dot t-illu-dot-3" cx="42" cy="27" r="2.4" fill="currentColor" stroke="none"/>
+              <path class="t-illu-stroke t-illu-spark" d="M54 3l1.6 4.4L60 9l-4.4 1.6L54 15l-1.6-4.4L48 9l4.4-1.6z" fill="currentColor" stroke="none"/>
+            </g>
+          </svg>
+          <span class="threat-illu-num">01</span>
+        </div>
+        <div class="threat-item-body">
+          <div class="threat-item-name" data-t="threat-1-name">AI-ассистент в фоне</div>
+          <div class="threat-item-desc" data-t="threat-1-desc">ChatGPT, Claude, Copilot, Gemini в скрытых процессах. Браузерные расширения с overlay поверх вопросов экзамена.</div>
+          <div class="threat-item-response" data-t="threat-1-resp">RAM-сканирование 200+ сигнатур + kiosk-mode на старте</div>
+        </div>
+      </div>
+
+      <div class="threat-item" data-illu="remote">
+        <div class="threat-illu">
+          <svg viewBox="0 0 64 64" class="t-illu" aria-hidden="true">
+            <g transform="translate(2, 4)">
+              <rect class="t-illu-stroke t-illu-screen" x="4" y="10" width="36" height="26" rx="3" fill="none"/>
+              <line class="t-illu-stroke" x1="22" y1="36" x2="22" y2="42"/>
+              <line class="t-illu-stroke" x1="16" y1="42" x2="28" y2="42"/>
+              <path class="t-illu-stroke t-illu-cursor" d="M18 16l10 5-4 1.5 2 5-2 1-2-5-3 3z" fill="currentColor" stroke="none"/>
+              <circle class="t-illu-stroke t-illu-ring t-illu-ring-1" cx="48" cy="32" r="5" fill="none"/>
+              <circle class="t-illu-stroke t-illu-ring t-illu-ring-2" cx="48" cy="32" r="9" fill="none" opacity="0.6"/>
+              <circle class="t-illu-stroke t-illu-ring t-illu-ring-3" cx="48" cy="32" r="13" fill="none" opacity="0.3"/>
+            </g>
+          </svg>
+          <span class="threat-illu-num">02</span>
+        </div>
+        <div class="threat-item-body">
+          <div class="threat-item-name" data-t="threat-2-name">Удалённый доступ</div>
+          <div class="threat-item-desc" data-t="threat-2-desc">AnyDesk, TeamViewer, Chrome Remote Desktop, RustDesk — внешний оператор управляет машиной студента в реальном времени.</div>
+          <div class="threat-item-response" data-t="threat-2-resp">Завершение процесса и сессии на уровне ОС за 0.4 секунды</div>
+        </div>
+      </div>
+
+      <div class="threat-item" data-illu="vm">
+        <div class="threat-illu">
+          <svg viewBox="0 0 64 64" class="t-illu" aria-hidden="true">
+            <g transform="translate(0, 2)">
+              <rect class="t-illu-stroke t-illu-host" x="4" y="8" width="56" height="44" rx="3" fill="none"/>
+              <line class="t-illu-stroke" x1="4" y1="17" x2="60" y2="17" opacity="0.5"/>
+              <circle cx="8" cy="12" r="1.4" fill="currentColor" stroke="none" opacity="0.4"/>
+              <circle cx="13" cy="12" r="1.4" fill="currentColor" stroke="none" opacity="0.4"/>
+              <rect class="t-illu-stroke t-illu-vm" x="14" y="23" width="36" height="22" rx="2" fill="none" stroke-dasharray="3 2"/>
+              <text class="t-illu-vm-text" x="32" y="38" text-anchor="middle" font-size="8" font-weight="700" font-family="monospace">VM</text>
+            </g>
+          </svg>
+          <span class="threat-illu-num">03</span>
+        </div>
+        <div class="threat-item-body">
+          <div class="threat-item-name" data-t="threat-3-name">Виртуальная машина</div>
+          <div class="threat-item-desc" data-t="threat-3-desc">Hyper-V, VMware, VirtualBox, Parallels — запуск экзамена в гостевой ОС с подменой среды.</div>
+          <div class="threat-item-response" data-t="threat-3-resp">VM detection: CPUID, ACPI, hypervisor fingerprint</div>
+        </div>
+      </div>
+
+      <div class="threat-item" data-illu="deepfake">
+        <div class="threat-illu">
+          <svg viewBox="0 0 64 64" class="t-illu" aria-hidden="true">
+            <rect class="t-illu-stroke t-illu-frame" x="6" y="6" width="52" height="52" rx="4" fill="none"/>
+            <circle class="t-illu-stroke t-illu-face" cx="32" cy="26" r="8" fill="none"/>
+            <path class="t-illu-stroke t-illu-face" d="M18 52c2-8 8-12 14-12s12 4 14 12" fill="none" stroke-linecap="round"/>
+            <rect class="t-illu-glitch t-illu-glitch-1" x="6" y="18" width="52" height="2" fill="currentColor" stroke="none" opacity="0"/>
+            <rect class="t-illu-glitch t-illu-glitch-2" x="6" y="32" width="52" height="2" fill="currentColor" stroke="none" opacity="0"/>
+            <rect class="t-illu-glitch t-illu-glitch-3" x="6" y="46" width="52" height="2" fill="currentColor" stroke="none" opacity="0"/>
+          </svg>
+          <span class="threat-illu-num">04</span>
+        </div>
+        <div class="threat-item-body">
+          <div class="threat-item-name" data-t="threat-4-name">Deepfake-камера</div>
+          <div class="threat-item-desc" data-t="threat-4-desc">OBS Virtual Camera, ManyCam, AI-аватар, фото или манекен — подмена живого видеопотока перед объективом.</div>
+          <div class="threat-item-response" data-t="threat-4-resp">Anti-spoofing AI + liveness + сверка hardware ID камеры</div>
+        </div>
+      </div>
+
+      <div class="threat-item" data-illu="dual">
+        <div class="threat-illu">
+          <svg viewBox="0 0 64 64" class="t-illu" aria-hidden="true">
+            <g transform="translate(0, 6)">
+              <rect class="t-illu-stroke t-illu-mon t-illu-mon-1" x="4" y="12" width="24" height="18" rx="2" fill="none"/>
+              <line class="t-illu-stroke" x1="16" y1="30" x2="16" y2="38"/>
+              <line class="t-illu-stroke" x1="10" y1="38" x2="22" y2="38"/>
+              <rect class="t-illu-stroke t-illu-mon t-illu-mon-2" x="36" y="12" width="24" height="18" rx="2" fill="none"/>
+              <line class="t-illu-stroke" x1="48" y1="30" x2="48" y2="38"/>
+              <line class="t-illu-stroke" x1="42" y1="38" x2="54" y2="38"/>
+              <text class="t-illu-cheat" x="48" y="23" text-anchor="middle" font-size="9" font-weight="700" font-family="monospace" opacity="0">●●●</text>
+            </g>
+          </svg>
+          <span class="threat-illu-num">05</span>
+        </div>
+        <div class="threat-item-body">
+          <div class="threat-item-name" data-t="threat-5-name">Второй монитор</div>
+          <div class="threat-item-desc" data-t="threat-5-desc">HDMI или DisplayPort со шпаргалками, ответами, открытым AI-сервисом — вне поля зрения веб-камеры.</div>
+          <div class="threat-item-response" data-t="threat-5-resp">Multi-display forced block до отключения внешних дисплеев</div>
+        </div>
+      </div>
+
+      <div class="threat-item" data-illu="swap">
+        <div class="threat-illu">
+          <svg viewBox="0 0 64 64" class="t-illu" aria-hidden="true">
+            <g transform="translate(0, 0)">
+              <rect class="t-illu-stroke t-illu-dev t-illu-dev-1" x="2" y="20" width="22" height="16" rx="2" fill="none"/>
+              <line class="t-illu-stroke" x1="13" y1="36" x2="13" y2="42"/>
+              <line class="t-illu-stroke" x1="8" y1="42" x2="18" y2="42"/>
+              <rect class="t-illu-stroke t-illu-dev t-illu-dev-2" x="40" y="20" width="22" height="16" rx="2" fill="none"/>
+              <line class="t-illu-stroke" x1="51" y1="36" x2="51" y2="42"/>
+              <line class="t-illu-stroke" x1="46" y1="42" x2="56" y2="42"/>
+              <g class="t-illu-swap-top">
+                <line class="t-illu-stroke" x1="26" y1="26" x2="38" y2="26"/>
+                <polyline class="t-illu-stroke" points="35 22.5 38.5 26 35 29.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              <g class="t-illu-swap-bot">
+                <line class="t-illu-stroke" x1="38" y1="32" x2="26" y2="32"/>
+                <polyline class="t-illu-stroke" points="29 28.5 25.5 32 29 35.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+            </g>
+          </svg>
+          <span class="threat-illu-num">06</span>
+        </div>
+        <div class="threat-item-body">
+          <div class="threat-item-name" data-t="threat-6-name">Подмена устройства</div>
+          <div class="threat-item-desc" data-t="threat-6-desc">Сдаёт другой человек со своего ПК. Сменены MAC, серийники, имя машины — внешне как у студента.</div>
+          <div class="threat-item-response" data-t="threat-6-resp">SHA-256 fingerprint: MAC + HDD serial + материнская плата</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     AI MONITORING
+════════════════════════════════════════════════════════ -->
+<section class="ai-section sec-light" id="ai">
+  <div class="container">
+
+    <div class="ai-head reveal">
+      <div class="label" data-t="ai-label">AI мониторинг</div>
+      <h2 data-t-html="ai-title"><span class="ai-grad">ИИ видит</span> то, чего не замечает&nbsp;человек</h2>
+      <p class="ai-head-sub" data-t-html="ai-subtitle">AI размечает каждый кадр и звук в реальном времени.<br>Проктор работает не с записью, а с приоритизированной лентой нарушений — события уже разложены по категориям.</p>
+    </div>
+
+    <!-- 6 capability cards -->
+    <div class="ai-caps-grid reveal">
+
+      <!-- 1. Face detection — VISION -->
+      <article class="ai-cap-card ai-cap-card--vision">
+        <div class="ai-cap-visual">
+          <svg viewBox="0 0 200 168" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- outer dashed orbit -->
+            <g class="ai-orbit" transform="translate(100,84)">
+              <circle r="62" stroke="#5B8BFF" stroke-width="1" stroke-dasharray="2 5" opacity="0.45"/>
+            </g>
+            <!-- center node -->
+            <g transform="translate(100,84)">
+              <circle r="32" fill="#0C1626" stroke="#5B8BFF" stroke-width="1.6"/>
+              <g stroke="#5B8BFF" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <circle cx="0" cy="-5" r="7"/>
+                <path d="M-12 14 a12 12 0 0 1 24 0"/>
+              </g>
+            </g>
+            <!-- 4 numbered satellite badges rotating along orbit -->
+            <g>
+              <circle r="9" fill="#1847ED"/>
+              <text y="3" text-anchor="middle" fill="white" font-family="Inter,sans-serif" font-size="9" font-weight="700">1</text>
+              <animateMotion dur="22s" repeatCount="indefinite" rotate="0" path="M 100 22 A 62 62 0 1 1 99.99 22 Z"/>
+            </g>
+            <g>
+              <circle r="9" fill="#1847ED"/>
+              <text y="3" text-anchor="middle" fill="white" font-family="Inter,sans-serif" font-size="9" font-weight="700">2</text>
+              <animateMotion dur="22s" begin="-5.5s" repeatCount="indefinite" rotate="0" path="M 100 22 A 62 62 0 1 1 99.99 22 Z"/>
+            </g>
+            <g>
+              <circle r="9" fill="#1847ED"/>
+              <text y="3" text-anchor="middle" fill="white" font-family="Inter,sans-serif" font-size="9" font-weight="700">3</text>
+              <animateMotion dur="22s" begin="-11s" repeatCount="indefinite" rotate="0" path="M 100 22 A 62 62 0 1 1 99.99 22 Z"/>
+            </g>
+            <g>
+              <circle r="9" fill="#1847ED"/>
+              <text y="3" text-anchor="middle" fill="white" font-family="Inter,sans-serif" font-size="9" font-weight="700">4</text>
+              <animateMotion dur="22s" begin="-16.5s" repeatCount="indefinite" rotate="0" path="M 100 22 A 62 62 0 1 1 99.99 22 Z"/>
+            </g>
+          </svg>
+        </div>
+        <div class="ai-cap-card-body">
+          <div class="ai-cap-tag" data-tag="vision">Анализ видео</div>
+          <h3 class="ai-cap-card-name" data-t="ai-cell-1">Детекция лиц</h3>
+          <p class="ai-cap-card-desc" data-t-html="ai-cell-1-desc">Отсутствие лица в кадре, второй человек,<br>подмена тестируемого.</p>
+        </div>
+      </article>
+
+      <!-- 2. Gaze analysis — VISION — eye in amber frame, pupil drifts then triggers alarm -->
+      <article class="ai-cap-card ai-cap-card--vision">
+        <div class="ai-cap-visual">
+          <svg viewBox="0 0 200 168" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- 2 protruding dashed arcs (rotate in opposite directions) -->
+            <circle class="ai-eye-arc ai-eye-arc-1" cx="-120" cy="-10" r="140" stroke="#FFC328" stroke-width="1" stroke-dasharray="6 6" fill="none" opacity="0.55"/>
+            <circle class="ai-eye-arc ai-eye-arc-2" cx="360" cy="178" r="180" stroke="#FFC328" stroke-width="1" stroke-dasharray="6 6" fill="none" opacity="0.55"/>
+            <!-- alert trace line (eye edge → "!" badge), appears with alarm -->
+            <line class="ai-eye-trace" x1="128" y1="84" x2="160" y2="84" stroke="#FF6B6B" stroke-width="1.4" stroke-dasharray="3 3" stroke-linecap="round"/>
+            <!-- "!" alert badge -->
+            <g transform="translate(160, 84)">
+              <g class="ai-eye-alert">
+                <circle r="7" fill="#FF6B6B"/>
+                <text y="3" text-anchor="middle" fill="white" font-family="Inter,sans-serif" font-size="8" font-weight="700">!</text>
+              </g>
+            </g>
+            <!-- center frame circle (same dimensions/stroke as audio mic) -->
+            <circle cx="100" cy="84" r="28" fill="#0C1626" stroke="#FFC328" stroke-width="1.6"/>
+            <!-- eye almond outline (user source, scaled, stroke = 2 like mic icon) -->
+            <g transform="translate(100 84) scale(0.55) translate(-24 -24)" fill="none" stroke="#FFC328" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" vector-effect="non-scaling-stroke">
+              <path d="M24.0029 8.16675C34.2502 8.16675 42.9535 14.7941 46.0537 23.9998C42.9537 33.2058 34.2504 39.8337 24.0029 39.8337C13.7554 39.8336 5.05198 33.2058 1.95215 23.9998C5.05219 14.794 13.7556 8.16693 24.0029 8.16675Z"/>
+            </g>
+            <!-- pupil (animated: drifts, then locks right when "!" fires) -->
+            <circle class="ai-eye-pupil" cx="100" cy="84" r="3.3" fill="none" stroke="#FFC328" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="ai-cap-card-body">
+          <div class="ai-cap-tag" data-tag="vision">Анализ видео</div>
+          <h3 class="ai-cap-card-name" data-t="ai-cell-2">Анализ взгляда</h3>
+          <p class="ai-cap-card-desc" data-t-html="ai-cell-2-desc">Отклонение взгляда от экрана. Поворот головы.<br>Чтение со стороны.</p>
+        </div>
+      </article>
+
+      <!-- 3. Audio control — AUDIO -->
+      <article class="ai-cap-card ai-cap-card--audio">
+        <div class="ai-cap-visual">
+          <svg viewBox="0 0 200 168" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- sonar waves — 3 rings emanate from mic, expand & fade -->
+            <g transform="translate(100,84)" stroke="#B594FC" fill="none">
+              <circle class="ai-wave" r="30" stroke-width="0.8"/>
+              <circle class="ai-wave" r="30" stroke-width="0.8"/>
+              <circle class="ai-wave" r="30" stroke-width="0.8"/>
+            </g>
+            <!-- alert trace line — overlays rings, terminates at mic edge & badge center -->
+            <line x1="122.6" y1="67.5" x2="160" y2="40" stroke="#FF6B6B" stroke-width="1.4" stroke-dasharray="3 3" opacity="0.85" stroke-linecap="round"/>
+            <!-- center mic node -->
+            <g transform="translate(100,84)">
+              <circle r="28" fill="#0C1626" stroke="#B594FC" stroke-width="1.6"/>
+              <g stroke="#B594FC" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <rect x="-7" y="-15" width="14" height="20" rx="7"/>
+                <path d="M-12 -2 a12 12 0 0 0 24 0"/>
+                <line x1="0" y1="10" x2="0" y2="16"/>
+              </g>
+            </g>
+            <!-- detection spike marker (red badge with !) -->
+            <g transform="translate(160,40)">
+              <circle r="7" fill="#FF6B6B"/>
+              <text y="3" text-anchor="middle" fill="white" font-family="Inter,sans-serif" font-size="8" font-weight="700">!</text>
+            </g>
+          </svg>
+        </div>
+        <div class="ai-cap-card-body">
+          <div class="ai-cap-tag" data-tag="audio">Анализ звука</div>
+          <h3 class="ai-cap-card-name" data-t="ai-cell-3">Аудио-контроль</h3>
+          <p class="ai-cap-card-desc" data-t-html="ai-cell-3-desc">Шёпот, подсказка, второй голос в комнате —<br>фиксируется в записи.</p>
+        </div>
+      </article>
+
+      <!-- 4. Anti-spoofing — INTEGRITY -->
+      <article class="ai-cap-card ai-cap-card--integrity">
+        <div class="ai-cap-visual">
+          <svg viewBox="0 0 200 168" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- rotating scanner orbit -->
+            <g class="ai-orbit" transform="translate(100,84)">
+              <circle r="64" stroke="#FFB257" stroke-width="1" stroke-dasharray="40 8" opacity="0.45"/>
+            </g>
+            <!-- center shield node -->
+            <g transform="translate(100,84)">
+              <circle r="34" fill="#0C1626" stroke="#FFB257" stroke-width="1.6"/>
+              <g stroke="#FFB257" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M0 -18 L14 -12 V4 C14 14 0 20 0 20 S-14 14 -14 4 V-12 Z"/>
+                <path d="M-6 -1 L-1 5 L7 -6" stroke-width="2.4"/>
+              </g>
+            </g>
+            <!-- single bright scanning particle -->
+            <g>
+              <circle r="4" fill="#FFB257"/>
+              <circle r="9" fill="none" stroke="#FFB257" stroke-width="1" opacity="0.5"/>
+              <animateMotion dur="5s" repeatCount="indefinite" rotate="0" path="M 164 84 A 64 64 0 1 1 163.99 84 Z"/>
+            </g>
+          </svg>
+        </div>
+        <div class="ai-cap-card-body">
+          <div class="ai-cap-tag" data-tag="integrity">Подлинность</div>
+          <h3 class="ai-cap-card-name" data-t="ai-cell-4">Анти-спуфинг</h3>
+          <p class="ai-cap-card-desc" data-t-html="ai-cell-4-desc">Фото или видео вместо лица. Маски.<br>Подмена видеопотока с камеры.</p>
+        </div>
+      </article>
+
+      <!-- 5. 40+ taxonomy — TAXONOMY -->
+      <article class="ai-cap-card ai-cap-card--taxonomy">
+        <div class="ai-cap-visual">
+          <svg viewBox="0 0 200 168" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g class="ai-orbit" transform="translate(100,84)">
+              <circle r="62" stroke="#C2CCDF" stroke-width="1" stroke-dasharray="2 5" opacity="0.4"/>
+            </g>
+            <g transform="translate(100,84)">
+              <circle r="30" fill="#0C1626" stroke="#C2CCDF" stroke-width="1.6"/>
+              <text y="5" text-anchor="middle" fill="#C2CCDF" font-family="Inter,sans-serif" font-size="16" font-weight="800">40+</text>
+            </g>
+            <g transform="translate(100,84)">
+              <g transform="translate(0,-62)"><rect x="-14" y="-7" width="28" height="14" rx="3" fill="#1A2540" stroke="#C2CCDF" stroke-width="1"/><text y="3" text-anchor="middle" fill="#C2CCDF" font-family="Inter,sans-serif" font-size="7" font-weight="700">GAZE</text></g>
+              <g transform="translate(54,-31)"><rect x="-14" y="-7" width="28" height="14" rx="3" fill="#1A2540" stroke="#C2CCDF" stroke-width="1"/><text y="3" text-anchor="middle" fill="#C2CCDF" font-family="Inter,sans-serif" font-size="7" font-weight="700">SPOOF</text></g>
+              <g transform="translate(54,31)"><rect x="-14" y="-7" width="28" height="14" rx="3" fill="#1A2540" stroke="#C2CCDF" stroke-width="1"/><text y="3" text-anchor="middle" fill="#C2CCDF" font-family="Inter,sans-serif" font-size="7" font-weight="700">AUDIO</text></g>
+              <g transform="translate(0,62)"><rect x="-14" y="-7" width="28" height="14" rx="3" fill="#1A2540" stroke="#C2CCDF" stroke-width="1"/><text y="3" text-anchor="middle" fill="#C2CCDF" font-family="Inter,sans-serif" font-size="7" font-weight="700">VM</text></g>
+              <g transform="translate(-54,31)"><rect x="-14" y="-7" width="28" height="14" rx="3" fill="#1A2540" stroke="#C2CCDF" stroke-width="1"/><text y="3" text-anchor="middle" fill="#C2CCDF" font-family="Inter,sans-serif" font-size="7" font-weight="700">NET</text></g>
+              <g transform="translate(-54,-31)"><rect x="-14" y="-7" width="28" height="14" rx="3" fill="#1A2540" stroke="#C2CCDF" stroke-width="1"/><text y="3" text-anchor="middle" fill="#C2CCDF" font-family="Inter,sans-serif" font-size="7" font-weight="700">FACE</text></g>
+            </g>
+            <circle r="2.4" fill="#C2CCDF">
+              <animateMotion dur="8s" repeatCount="indefinite" path="M 100 22 A 62 62 0 1 1 99.99 22 Z"/>
+            </circle>
+          </svg>
+        </div>
+        <div class="ai-cap-card-body">
+          <div class="ai-cap-tag" data-tag="taxonomy">Каталог нарушений</div>
+          <h3 class="ai-cap-card-name" data-t="ai-cell-5">40+ категорий нарушений</h3>
+          <p class="ai-cap-card-desc" data-t-html="ai-cell-5-desc">Полная таксономия: gaze, audio, spoof, VM,<br>network, behavior.</p>
+        </div>
+      </article>
+
+      <!-- 6. 360° coverage — COVERAGE -->
+      <article class="ai-cap-card ai-cap-card--coverage">
+        <div class="ai-cap-visual">
+          <svg viewBox="0 0 200 168" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g class="ai-orbit" transform="translate(100,84)">
+              <circle r="64" stroke="#4FDDF0" stroke-width="1" stroke-dasharray="2 5" opacity="0.45"/>
+            </g>
+            <g transform="translate(100,84)">
+              <circle r="22" fill="#0C1626" stroke="#4FDDF0" stroke-width="1.6"/>
+              <g stroke="#4FDDF0" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8">
+                <circle cx="0" cy="-3" r="5"/>
+                <path d="M-8 10 a8 8 0 0 1 16 0"/>
+              </g>
+            </g>
+            <g transform="translate(100,20)">
+              <circle r="11" fill="#1847ED"/>
+              <g stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="-5" y="-4" width="10" height="6" rx="1"/>
+                <line x1="-7" y1="3" x2="7" y2="3"/>
+              </g>
+              <text x="14" y="-7" fill="#4FDDF0" font-family="Inter,sans-serif" font-size="8" font-weight="700">1</text>
+            </g>
+            <g transform="translate(164,84)">
+              <circle r="11" fill="#1847ED"/>
+              <g stroke="white" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="-3" y="-5" width="6" height="10" rx="1"/>
+              </g>
+              <text x="-22" y="-7" fill="#4FDDF0" font-family="Inter,sans-serif" font-size="8" font-weight="700">2</text>
+            </g>
+            <g transform="translate(100,148)">
+              <text y="3" text-anchor="middle" fill="#4FDDF0" font-family="Inter,sans-serif" font-size="9" font-weight="800" letter-spacing="2">360°</text>
+            </g>
+            <circle r="2.6" fill="#4FDDF0">
+              <animateMotion dur="7s" repeatCount="indefinite" path="M 164 84 A 64 64 0 1 1 163.99 84 Z"/>
+            </circle>
+          </svg>
+        </div>
+        <div class="ai-cap-card-body">
+          <div class="ai-cap-tag" data-tag="coverage">Зоны контроля</div>
+          <h3 class="ai-cap-card-name" data-t="ai-cell-6">360° обзор</h3>
+          <p class="ai-cap-card-desc" data-t-html="ai-cell-6-desc">Смартфон как вторая камера.<br>Контроль слепых зон рабочего места.</p>
+        </div>
+      </article>
+
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     AI RIBBON (separated full-width section)
+════════════════════════════════════════════════════════ -->
+<section class="ai-ribbon-section" id="ai-ribbon-section">
+  <div class="ai-ribbon reveal">
+    <div class="ai-ribbon-stat">
+      <span class="ai-ribbon-stat-num">45–50</span>
+      <span class="ai-ribbon-stat-label">сессий / 1 проктор</span>
+    </div>
+    <div class="ai-ribbon-text" data-t-html="ai-highlight">
+      AI приоритизирует события по уровню риска.<br>Оператор подтверждает только подсвеченные нарушения — без пересмотра записи.
+    </div>
+    <a href="#demo" class="ai-ribbon-cta">Получить демо →</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     DESKTOP SOFTWARE
+════════════════════════════════════════════════════════ -->
+<section class="desktop-section sec-light" id="desktop">
+  <div class="container">
+
+    <div class="sec-head desktop-head reveal" style="max-width:none;margin-bottom:52px">
+      <div class="label" data-t="desktop-label">Главное преимущество</div>
+      <h2 class="desktop-h2" data-t-html="desktop-title"><span class="ai-grad">Десктоп-клиент</span> для high-stakes экзаменов</h2>
+      <p data-t-html="desktop-subtitle">Установленное приложение работает на уровне операционной системы — с прямым доступом к процессам,<br>памяти, периферии и сети. Глубина, нужная для экзаменов с максимальными требованиями к доверию.</p>
+    </div>
+
+    <div class="desktop-layout">
+      <!-- LEFT: 6 capability tiles -->
+      <div class="dt-feats">
+
+        <article class="dt-feat reveal">
+          <div class="dt-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="6" cy="7" r="0.5" fill="currentColor"/><circle cx="8" cy="7" r="0.5" fill="currentColor"/><line x1="7" y1="14" x2="17" y2="14"/></svg>
+          </div>
+          <h3 class="dt-feat-title" data-t="dt-feat-1-t">OS-level контроль</h3>
+          <p class="dt-feat-desc" data-t="dt-feat-1-d">Прямая работа с процессами, памятью, периферией и сетью. Системный уровень — там, где живут попытки обхода.</p>
+        </article>
+
+        <article class="dt-feat reveal">
+          <div class="dt-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3 class="dt-feat-title" data-t="dt-feat-2-t">Режим киоска</h3>
+          <p class="dt-feat-desc" data-t="dt-feat-2-d">Окно экзамена нельзя свернуть, закрыть, изменить. Системные клавиши и сторонние приложения отключены.</p>
+        </article>
+
+        <article class="dt-feat reveal">
+          <div class="dt-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <h3 class="dt-feat-title" data-t="dt-feat-3-t">Анти-обход</h3>
+          <p class="dt-feat-desc" data-t="dt-feat-3-d">AnyDesk, TeamViewer, Radmin, RDP, виртуальные машины — обнаруживаются и автоматически завершаются на старте.</p>
+        </article>
+
+        <article class="dt-feat reveal">
+          <div class="dt-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="8" cy="6" r="1.5" fill="currentColor" stroke="none"/><circle cx="14" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="11" cy="18" r="1.5" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <h3 class="dt-feat-title" data-t="dt-feat-4-t">Аппаратный fingerprint</h3>
+          <p class="dt-feat-desc" data-t="dt-feat-4-d">MAC, серийник HDD, список USB-устройств. Подключение посторонней флешки или клавиатуры — событие в журнале.</p>
+        </article>
+
+        <article class="dt-feat reveal">
+          <div class="dt-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="12" cy="12.5" r="3"/><line x1="9" y1="9.5" x2="15" y2="15.5"/></svg>
+          </div>
+          <h3 class="dt-feat-title" data-t="dt-feat-5-t">Защита от записи</h3>
+          <p class="dt-feat-desc" data-t="dt-feat-5-d">Anti-Debug, прозрачное окно на Windows, эвристика screen-recorders на macOS. Невидимые приложения — тоже.</p>
+        </article>
+
+        <article class="dt-feat reveal">
+          <div class="dt-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L20 6 V13 C20 18 12 22 12 22 S4 18 4 13 V6 Z"/><path d="M9 12 L11.5 14.5 L15.5 10"/></svg>
+          </div>
+          <h3 class="dt-feat-title" data-t="dt-feat-6-t">Шифрование логов</h3>
+          <p class="dt-feat-desc" data-t="dt-feat-6-d">Каждое событие подписано ключом. Лента нарушений неизменна — подделать таймлайн после экзамена невозможно.</p>
+        </article>
+
+      </div>
+
+      <!-- Right — OES Agent monitor panel -->
+      <div class="reveal-right">
+        <div class="agent-mock">
+          <!-- Title bar -->
+          <div class="agent-titlebar">
+            <div class="agent-dots">
+              <span class="agent-dot"></span>
+              <span class="agent-dot"></span>
+              <span class="agent-dot"></span>
+            </div>
+            <div class="agent-titlebar-text">OES Agent — System Layer</div>
+            <div class="agent-live">
+              <span class="agent-live-dot"></span>
+              <span>LIVE</span>
+            </div>
+          </div>
+
+          <!-- System status block -->
+          <div class="agent-section">
+            <div class="agent-section-head">
+              <span class="agent-section-label">System Status</span>
+              <span class="agent-section-meta">5 / 5 active</span>
+            </div>
+            <div class="agent-status-grid">
+              <div class="agent-status">
+                <span class="agent-status-dot ok"></span>
+                <span class="agent-status-name">Kiosk Mode</span>
+                <span class="agent-status-val ok">Armed</span>
+              </div>
+              <div class="agent-status">
+                <span class="agent-status-dot ok"></span>
+                <span class="agent-status-name">RAM Monitor</span>
+                <span class="agent-status-val ok">Running</span>
+              </div>
+              <div class="agent-status">
+                <span class="agent-status-dot ok"></span>
+                <span class="agent-status-name">VM Detection</span>
+                <span class="agent-status-val ok">No VM found</span>
+              </div>
+              <div class="agent-status">
+                <span class="agent-status-dot ok"></span>
+                <span class="agent-status-name">Anti-Debug</span>
+                <span class="agent-status-val ok">Armed</span>
+              </div>
+              <div class="agent-status">
+                <span class="agent-status-dot ok"></span>
+                <span class="agent-status-name">Log Signing</span>
+                <span class="agent-status-val ok">Active</span>
+              </div>
+              <div class="agent-status">
+                <span class="agent-status-dot ok"></span>
+                <span class="agent-status-name">Screen Capture Shield</span>
+                <span class="agent-status-val ok">On</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blocked processes -->
+          <div class="agent-section">
+            <div class="agent-section-head">
+              <span class="agent-section-label">Blocked at startup</span>
+              <span class="agent-section-meta">3 events</span>
+            </div>
+            <div class="agent-log">
+              <div class="agent-log-row">
+                <span class="agent-log-icon">✕</span>
+                <span class="agent-log-name">AnyDesk.exe</span>
+                <span class="agent-log-val">terminated · 09:00:12</span>
+              </div>
+              <div class="agent-log-row">
+                <span class="agent-log-icon">✕</span>
+                <span class="agent-log-name">TeamViewer.exe</span>
+                <span class="agent-log-val">terminated · 09:00:14</span>
+              </div>
+              <div class="agent-log-row">
+                <span class="agent-log-icon">⚠</span>
+                <span class="agent-log-name">VBoxClient</span>
+                <span class="agent-log-val">VM signature · 09:00:15</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hardware fingerprint -->
+          <div class="agent-section">
+            <div class="agent-section-head">
+              <span class="agent-section-label">Hardware fingerprint</span>
+              <span class="agent-section-meta">verified</span>
+            </div>
+            <div class="agent-hw">
+              <div class="agent-hw-row">
+                <span class="agent-hw-key">MAC</span>
+                <span class="agent-hw-val">A8:B9:C2:1F:E8:3D</span>
+              </div>
+              <div class="agent-hw-row">
+                <span class="agent-hw-key">HDD&nbsp;Serial</span>
+                <span class="agent-hw-val">WD-WX21A8E4F92K</span>
+              </div>
+              <div class="agent-hw-row">
+                <span class="agent-hw-key">USB</span>
+                <span class="agent-hw-val">1 device · keyboard (allowed)</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════════════════ -->
+<section class="how-section sec-dark" id="how">
+
+  <!-- Ambient background glow — 1 big + 2 small (small ones with heavy blur) -->
+  <div class="flow-bg" aria-hidden="true">
+    <div class="flow-bg-glow flow-bg-glow--big"></div>
+    <div class="flow-bg-glow flow-bg-glow--s1"></div>
+    <div class="flow-bg-glow flow-bg-glow--s2"></div>
+  </div>
+
+  <div class="container flow-container">
+
+    <div class="sec-head how-head reveal">
+      <div class="label label-dark" data-t="how-label">Как работает</div>
+      <h2 class="how-h2" data-t="how-title">От камеры до юридически защищённого вердикта</h2>
+      <p data-t="how-subtitle">Каждый сигнал — видео, экран, hardware fingerprint — проходит через AI-обработку и шифрование. На выходе проктор работает с готовым отчётом и TrustScore, а не с сырым видео.</p>
+    </div>
+
+    <div class="flow-diagram">
+
+      <!-- SVG paths are drawn dynamically by JS to match chip positions -->
+      <svg class="flow-paths" aria-hidden="true">
+        <defs>
+          <linearGradient id="flow-stroke" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%"   stop-color="#2B5CFF" stop-opacity="0.3"/>
+            <stop offset="50%"  stop-color="#6C95FF" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#5024D2" stop-opacity="0.5"/>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <!-- Stage 1 — Sources -->
+      <div class="flow-col flow-col--sources">
+        <div class="flow-stage-label">
+          <span class="flow-stage-num">01</span>
+          <span class="flow-stage-title" data-t="flow-stage-1">Источники</span>
+        </div>
+        <div class="flow-col-chips">
+
+        <div class="flow-chip flow-chip--src" style="--row:1">
+          <span class="flow-chip-glow"></span>
+          <span class="flow-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="18" height="18"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </span>
+          <span class="flow-chip-name" data-t="flow-1-1">Камера + микрофон</span>
+        </div>
+
+        <div class="flow-chip flow-chip--src" style="--row:2">
+          <span class="flow-chip-glow"></span>
+          <span class="flow-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="18" height="18"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </span>
+          <span class="flow-chip-name" data-t="flow-1-2">Экран и процессы</span>
+        </div>
+
+        <div class="flow-chip flow-chip--src" style="--row:3">
+          <span class="flow-chip-glow"></span>
+          <span class="flow-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="18" height="18"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="10" x2="6" y2="14"/><line x1="10" y1="10" x2="10" y2="14"/><line x1="14" y1="10" x2="14" y2="14"/><line x1="18" y1="10" x2="18" y2="14"/></svg>
+          </span>
+          <span class="flow-chip-name" data-t="flow-1-3">Hardware ID</span>
+        </div>
+        </div>
+      </div>
+
+      <!-- Stage 2 — AI Processing -->
+      <div class="flow-col flow-col--ai">
+        <div class="flow-stage-label">
+          <span class="flow-stage-num">02</span>
+          <span class="flow-stage-title" data-t="flow-stage-2">AI обработка</span>
+        </div>
+        <div class="flow-col-chips">
+
+        <div class="flow-chip flow-chip--ai" style="--row:1">
+          <span class="flow-chip-glow"></span>
+          <span class="flow-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="18" height="18"><circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/></svg>
+          </span>
+          <span class="flow-chip-name" data-t="flow-2-1">Computer Vision</span>
+        </div>
+
+        <div class="flow-chip flow-chip--ai" style="--row:2">
+          <span class="flow-chip-glow"></span>
+          <span class="flow-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="18" height="18"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/></svg>
+          </span>
+          <span class="flow-chip-name" data-t="flow-2-2">Behavioral AI</span>
+        </div>
+        </div>
+      </div>
+
+      <!-- Stage 3 — Secure storage -->
+      <div class="flow-col flow-col--storage">
+        <div class="flow-stage-label">
+          <span class="flow-stage-num">03</span>
+          <span class="flow-stage-title" data-t="flow-stage-3">Защищённое хранилище</span>
+        </div>
+        <div class="flow-col-chips">
+
+        <div class="flow-chip flow-chip--storage" style="--row:1">
+          <span class="flow-chip-glow"></span>
+          <span class="flow-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="18" height="18"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+          </span>
+          <span class="flow-chip-name" data-t="flow-3-1">Серверы OES (On-Premise)</span>
+        </div>
+
+        <div class="flow-chip flow-chip--storage" style="--row:2">
+          <span class="flow-chip-glow"></span>
+          <span class="flow-chip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </span>
+          <span class="flow-chip-name" data-t="flow-3-2">Audit Trail · Sealed</span>
+        </div>
+        </div>
+      </div>
+
+      <!-- Stage 4 — Verdict -->
+      <div class="flow-col flow-col--verdict">
+        <div class="flow-stage-label">
+          <span class="flow-stage-num">04</span>
+          <span class="flow-stage-title" data-t="flow-stage-4">Вердикт</span>
+        </div>
+        <div class="flow-col-chips">
+
+        <div class="flow-verdict">
+          <div class="flow-verdict-rings" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="flow-verdict-body">
+            <div class="flow-verdict-head">
+              <div class="flow-verdict-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              </div>
+              <div class="flow-verdict-title" data-t="flow-verdict-title">Готовый вердикт</div>
+            </div>
+            <div class="flow-verdict-desc" data-t="flow-verdict-desc">Audit trail с подписями, таймлайном нарушений и TrustScore. Готов к разбору в апелляционной комиссии или суде.</div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Transparent divider between flow and infosec content -->
+  <div class="how-divider"></div>
+
+  <!-- Information security block (merged into how-section) -->
+  <div class="container infosec-container">
+
+    <!-- Header left + seals right -->
+    <div class="infosec-top-row">
+
+    <div class="infosec-hero reveal">
+      <div class="label label-dark" data-t="infosec-label">Информационная безопасность</div>
+      <h2 class="infosec-h2" data-t="infosec-title">Государственный уровень ИБ</h2>
+    </div>
+
+    <div class="infosec-sub-row">
+      <p class="infosec-sub reveal" data-t="infosec-subtitle">Платформа OES прошла испытания в аккредитованной лаборатории информационной безопасности Республики Казахстан. Получены 5 протоколов соответствия по безопасности системы и инфраструктуры.</p>
+      <!-- 4 certification badges -->
+      <div class="seal-row reveal">
+
+      <div class="seal-badge">
+        <div class="seal-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <div class="seal-val">5</div>
+        <div class="seal-name" data-t="seal-1-name">5 протоколов ИБ</div>
+        <div class="seal-meta" data-t="seal-1-meta">Полная аккредитация</div>
+      </div>
+
+      <div class="seal-badge">
+        <div class="seal-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 3h6"/><path d="M10 3v7l-5 9a1 1 0 0 0 .9 1.5h12.2A1 1 0 0 0 19 19l-5-9V3"/><path d="M7.5 16h9"/></svg>
+        </div>
+        <div class="seal-name" data-t="seal-2-name">Аккредитация РК</div>
+        <div class="seal-meta" data-t="seal-2-meta">Тестирование РК</div>
+      </div>
+
+      <div class="seal-badge">
+        <div class="seal-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
+        </div>
+        <div class="seal-name" data-t="seal-3-name">Astana Hub</div>
+        <div class="seal-meta" data-t="seal-3-meta">Резидент технопарка</div>
+      </div>
+
+      <div class="seal-badge">
+        <div class="seal-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M15 9.354a4 4 0 1 0 0 5.292"/></svg>
+        </div>
+        <div class="seal-name" data-t="seal-4-name">Авторское право</div>
+        <div class="seal-meta" data-t="seal-4-meta">Защищённая ИС</div>
+      </div>
+
+    </div>
+
+    </div><!-- /infosec-sub-row -->
+
+    </div><!-- /infosec-top-row -->
+
+    <!-- Features grid: 2 themes × 6 features -->
+    <div class="infosec-themes reveal">
+
+      <!-- Theme 1: Data Protection -->
+      <div class="infosec-theme-block">
+        <div class="infosec-theme-head">
+          <div class="infosec-theme-tag">
+            <span class="infosec-theme-dot"></span>
+            <span data-t="theme-1-tag">Защита данных</span>
+          </div>
+          <h3 class="infosec-theme-name" data-t="theme-1-name">Данные клиента под полным контролем</h3>
+          <p class="infosec-theme-desc" data-t="theme-1-desc">Развёртывание на инфраструктуре заказчика. Шифрование на каждом уровне передачи и хранения. Соответствие национальным требованиям к персональным данным.</p>
+        </div>
+        <div class="infosec-feats">
+          <div class="infosec-feat">
+            <div class="infosec-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><circle cx="7" cy="6" r="0.6" fill="currentColor"/><circle cx="9.5" cy="6" r="0.6" fill="currentColor"/></svg></div>
+            <div class="infosec-feat-body">
+              <div class="infosec-feat-name" data-t="feat-1-name">On-Premise</div>
+              <div class="infosec-feat-desc" data-t="feat-1-desc">Развёртывание на серверах заказчика без выхода данных за периметр.</div>
+            </div>
+          </div>
+          <div class="infosec-feat">
+            <div class="infosec-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+            <div class="infosec-feat-body">
+              <div class="infosec-feat-name" data-t="feat-2-name">AES-256 + TLS 1.2+</div>
+              <div class="infosec-feat-desc" data-t="feat-2-desc">Шифрование at-rest и in-transit на всех уровнях системы.</div>
+            </div>
+          </div>
+          <div class="infosec-feat">
+            <div class="infosec-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg></div>
+            <div class="infosec-feat-body">
+              <div class="infosec-feat-name" data-t="feat-3-name">Закон РК о ПД</div>
+              <div class="infosec-feat-desc" data-t="feat-3-desc">Полное соответствие требованиям регулятора через On-Premise.</div>
+            </div>
+          </div>
+          <div class="infosec-feat">
+            <div class="infosec-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="infosec-feat-body">
+              <div class="infosec-feat-name" data-t="feat-4-name">ФЗ-152 (РФ)</div>
+              <div class="infosec-feat-desc" data-t="feat-4-desc">Локализация персональных данных для российских клиентов.</div>
+            </div>
+          </div>
+          <div class="infosec-feat">
+            <div class="infosec-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="10" x2="6" y2="14"/><line x1="10" y1="10" x2="10" y2="14"/><line x1="14" y1="10" x2="14" y2="14"/><line x1="18" y1="10" x2="18" y2="14"/></svg></div>
+            <div class="infosec-feat-body">
+              <div class="infosec-feat-name" data-t="feat-5-name">Hardware fingerprint</div>
+              <div class="infosec-feat-desc" data-t="feat-5-desc">SHA-256 привязка сессии к физическому устройству.</div>
+            </div>
+          </div>
+          <div class="infosec-feat">
+            <div class="infosec-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg></div>
+            <div class="infosec-feat-body">
+              <div class="infosec-feat-name" data-t="feat-6-name">High-load инфраструктура</div>
+              <div class="infosec-feat-desc" data-t="feat-6-desc">До 10 000 одновременных сессий без деградации сервиса.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Theme 2: Audit & Legal -->
+      <div class="infosec-theme-block">
+        <div class="infosec-theme-head">
+          <div class="infosec-theme-tag">
+            <span class="infosec-theme-dot infosec-theme-dot--success"></span>
+            <span data-t="theme-2-tag">Audit &amp; Legal</span>
+          </div>
+          <h3 class="infosec-theme-name" data-t="theme-2-name">Доказательная база для любой инстанции</h3>
+          <p class="infosec-theme-desc" data-t="theme-2-desc">Каждое событие фиксируется с таймкодом, подписью и контекстом. Решение проктора закрепляется цифровой подписью. На выходе — закрытый пакет, юридически защищённый для апелляции или суда.</p>
+        </div>
+        <div class="infosec-feats">
+          <div class="infosec-feat">
+            <div class="infosec-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+            <div class="infosec-feat-body">
+              <div class="infosec-feat-name" data-t="feat-7-name">Полный audit trail</div>
+              <div class="infosec-feat-desc" data-t="feat-7-desc">Каждое действие, флаг и решение — с таймкодом и контекстом.</div>
+            </div>
+          </div>
+          <div class="infosec-feat">
+            <div class="infosec-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="infosec-feat-body">
+              <div class="infosec-feat-name" data-t="feat-8-name">Time-stamped события</div>
+              <div class="infosec-feat-desc" data-t="feat-8-desc">UTC-метки на каждое нарушение и системное событие.</div>
+            </div>
+          </div>
+          <div class="infosec-feat">
+            <div class="infosec-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="infosec-feat-body">
+              <div class="infosec-feat-name" data-t="feat-9-name">Подпись проктора</div>
+              <div class="infosec-feat-desc" data-t="feat-9-desc">Решение закрепляется цифровой подписью и комментарием.</div>
+            </div>
+          </div>
+          <div class="infosec-feat">
+            <div class="infosec-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="9" r="3"/><path d="M5 20a7 7 0 0 1 14 0"/></svg></div>
+            <div class="infosec-feat-body">
+              <div class="infosec-feat-name" data-t="feat-10-name">Биометрическая цепочка</div>
+              <div class="infosec-feat-desc" data-t="feat-10-desc">Face match верификация на старте и в течение сессии.</div>
+            </div>
+          </div>
+          <div class="infosec-feat">
+            <div class="infosec-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <div class="infosec-feat-body">
+              <div class="infosec-feat-name" data-t="feat-11-name">REST API</div>
+              <div class="infosec-feat-desc" data-t="feat-11-desc">Прямой доступ к audit-данным из вашей LMS или ERP.</div>
+            </div>
+          </div>
+          <div class="infosec-feat">
+            <div class="infosec-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="infosec-feat-body">
+              <div class="infosec-feat-name" data-t="feat-12-name">Sealed evidence package</div>
+              <div class="infosec-feat-desc" data-t="feat-12-desc">Закрытый PDF с цепочкой доказательств для апелляции и суда.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Evidence Package — sealed artifact -->
+    <div class="evidence-pkg-head reveal">
+      <div class="evidence-pkg-tag">
+        <span data-t="evidence-label">Evidence package</span>
+      </div>
+      <h3 class="evidence-pkg-title" data-t="evidence-title">Юридически защищённый пакет на каждый экзамен</h3>
+      <p class="evidence-pkg-sub" data-t="evidence-sub">Каждый сданный экзамен упаковывается в криптографически подписанный архив из трёх слоёв: идентичность сдающего, целостность данных, защищённое хранение. Court-admissible, ISO/IEC 27037-совместимый.</p>
+    </div>
+
+    <div class="evidence-pkg reveal">
+      <div class="evidence-pkg-file">
+        <span class="evidence-pkg-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="evidence-pkg-filename">EXAM_RECORD_2025-05-22-001.oes</span>
+        <span class="evidence-pkg-sealed">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" width="11" height="11"><polyline points="20 6 9 17 4 12"/></svg>
+          <span data-t="evidence-sealed">SEALED</span>
+        </span>
+      </div>
+
+      <div class="evidence-pkg-layers">
+        <div class="evidence-layer">
+          <div class="evidence-layer-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="evidence-layer-label" data-t="evidence-1-label">Identity</div>
+          <div class="evidence-layer-name" data-t="evidence-1-name">Идентичность</div>
+          <div class="evidence-layer-desc" data-t="evidence-1-desc">Подтверждена биометрией и цифровой подписью проктора.</div>
+          <div class="evidence-layer-divider"><span>data</span></div>
+          <div class="evidence-layer-fields">
+            <div class="evidence-field"><span class="evidence-field-key">face_match</span><span class="evidence-field-val">99.4%</span></div>
+            <div class="evidence-field"><span class="evidence-field-key">proctor_id</span><span class="evidence-field-val">847</span></div>
+            <div class="evidence-field"><span class="evidence-field-key">signed_at</span><span class="evidence-field-val">14:02Z</span></div>
+          </div>
+        </div>
+
+        <div class="evidence-layer">
+          <div class="evidence-layer-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg></div>
+          <div class="evidence-layer-label" data-t="evidence-2-label">Integrity</div>
+          <div class="evidence-layer-name" data-t="evidence-2-name">Целостность</div>
+          <div class="evidence-layer-desc" data-t="evidence-2-desc">AES-256 + SHA-256 на каждом слое архива. Любое изменение детектируется.</div>
+          <div class="evidence-layer-divider"><span>hash</span></div>
+          <div class="evidence-layer-fields">
+            <div class="evidence-field"><span class="evidence-field-key">sha256</span><span class="evidence-field-val">9e2f…4a8d</span></div>
+            <div class="evidence-field"><span class="evidence-field-key">aes256</span><span class="evidence-field-val evidence-field-val--ok">✓</span></div>
+            <div class="evidence-field"><span class="evidence-field-key">timestamp</span><span class="evidence-field-val">14:31:08Z</span></div>
+          </div>
+        </div>
+
+        <div class="evidence-layer">
+          <div class="evidence-layer-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/><circle cx="12" cy="14" r="1.6"/><line x1="12" y1="15.6" x2="12" y2="18"/></svg></div>
+          <div class="evidence-layer-label" data-t="evidence-3-label">Custody</div>
+          <div class="evidence-layer-name" data-t="evidence-3-name">Хранение</div>
+          <div class="evidence-layer-desc" data-t="evidence-3-desc">Под СТ РК ИСО 27001. Доступ — только по запросу для аудита или суда.</div>
+          <div class="evidence-layer-divider"><span>meta</span></div>
+          <div class="evidence-layer-fields">
+            <div class="evidence-field"><span class="evidence-field-key">retain</span><span class="evidence-field-val">5y</span></div>
+            <div class="evidence-field"><span class="evidence-field-key">access</span><span class="evidence-field-val">audit</span></div>
+            <div class="evidence-field"><span class="evidence-field-key">region</span><span class="evidence-field-val">KZ + RU</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="evidence-pkg-footer">
+        <span class="evidence-pkg-badge" data-t="evidence-footer-1">Tamper-evident</span>
+        <span class="evidence-pkg-dot" aria-hidden="true">·</span>
+        <span class="evidence-pkg-badge" data-t="evidence-footer-2">Court-admissible</span>
+        <span class="evidence-pkg-dot" aria-hidden="true">·</span>
+        <span class="evidence-pkg-badge" data-t="evidence-footer-3">ISO/IEC 27037</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     SCALE
+════════════════════════════════════════════════════════ -->
+<section class="scale-section sec-light" id="scale">
+  <div class="container">
+
+    <div class="sec-head reveal">
+      <div class="label" data-t="scale-label">Масштаб</div>
+      <h2 data-t="scale-title">Проверено на национальном уровне</h2>
+    </div>
+
+    <div class="scale-numbers scale-numbers--4">
+      <div class="scale-block">
+        <div class="scale-block-num"><span class="counter" data-target="4" data-suffix="M+">0</span></div>
+        <div class="scale-block-label" data-t="scale-1-label">экзаменов проведено</div>
+        <div class="scale-block-bg">4M</div>
+      </div>
+      <div class="scale-block">
+        <div class="scale-block-num"><span class="counter" data-target="10" data-suffix="K">0</span></div>
+        <div class="scale-block-label" data-t="scale-2-label">одновременных сессий</div>
+        <div class="scale-block-bg">10K</div>
+      </div>
+      <div class="scale-block">
+        <div class="scale-block-num"><span class="counter" data-target="7" data-suffix="+">0</span></div>
+        <div class="scale-block-label" data-t="scale-3-label">лет на рынке</div>
+        <div class="scale-block-bg">7</div>
+      </div>
+      <div class="scale-block">
+        <div class="scale-block-num"><span class="counter" data-target="52" data-suffix="">0</span><span class="scale-block-unit">кБ/с</span></div>
+        <div class="scale-block-label" data-t="scale-4-label">минимальная скорость</div>
+        <div class="scale-block-bg">52</div>
+      </div>
+    </div>
+
+    <div class="clients-marquee">
+      <div class="clients-track">
+        <span class="client-badge">КазТест (НСТ)</span>
+        <span class="client-badge">ЕНТ · 293K абитуриентов</span>
+        <span class="client-badge">Astana IT University</span>
+        <span class="client-badge">МВД РК</span>
+        <span class="client-badge">Platonus</span>
+        <span class="client-badge">BI University</span>
+        <span class="client-badge">Академия Президента РК</span>
+        <span class="client-badge">Промсвязьбанк (РФ)</span>
+        <span class="client-badge">НЦПК «Өрлеу»</span>
+        <span class="client-badge">SDU University</span>
+        <span class="client-badge">itest.kz</span>
+        <span class="client-badge">КазНУ</span>
+        <!-- duplicate for seamless loop -->
+        <span class="client-badge">КазТест (НСТ)</span>
+        <span class="client-badge">ЕНТ · 293K абитуриентов</span>
+        <span class="client-badge">Astana IT University</span>
+        <span class="client-badge">МВД РК</span>
+        <span class="client-badge">Platonus</span>
+        <span class="client-badge">BI University</span>
+        <span class="client-badge">Академия Президента РК</span>
+        <span class="client-badge">Промсвязьбанк (РФ)</span>
+        <span class="client-badge">НЦПК «Өрлеу»</span>
+        <span class="client-badge">SDU University</span>
+        <span class="client-badge">itest.kz</span>
+        <span class="client-badge">КазНУ</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     UNIQUE
+════════════════════════════════════════════════════════ -->
+<section class="unique-section sec-light" id="unique">
+  <div class="container">
+
+    <div class="sec-head centered reveal">
+      <div class="label" data-t="unique-label">Дифференциаторы</div>
+      <h2 data-t="unique-title">Что делает OES уникальным</h2>
+      <p data-t="unique-subtitle">Единственная в СНГ платформа с OS-level контролем экзаменационной среды. Браузерные системы этого физически не умеют.</p>
+    </div>
+
+    <div class="unique-grid">
+      <div class="unique-card">
+        <div class="unique-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><rect x="2" y="4" width="20" height="13" rx="2"/><line x1="2" y1="21" x2="22" y2="21"/></svg></div>
+        <div class="unique-card-name" data-t="uniq-1">Desktop ПО</div>
+        <div class="unique-card-desc" data-t="uniq-1-desc">Windows 7–11 и macOS. Нативное приложение, а не браузерное расширение — полный доступ к ОС.</div>
+      </div>
+      <div class="unique-card">
+        <div class="unique-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="unique-card-name" data-t="uniq-2">Secure Exam Environment</div>
+        <div class="unique-card-desc" data-t="uniq-2-desc">OS-level kiosk mode, блокировка RAM-процессов, контроль сетевой среды, Anti-Debug защита.</div>
+      </div>
+      <div class="unique-card">
+        <div class="unique-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="14" x2="22" y2="14"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="14" x2="4" y2="14"/></svg></div>
+        <div class="unique-card-name" data-t="uniq-3">AI-мониторинг</div>
+        <div class="unique-card-desc" data-t="uniq-3-desc">40+ категорий нарушений. Детекция лиц, анализ взгляда, аудио-контроль, антиспуфинг — всё в реальном времени.</div>
+      </div>
+      <div class="unique-card">
+        <div class="unique-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div class="unique-card-name" data-t="uniq-4">High-load</div>
+        <div class="unique-card-desc" data-t="uniq-4-desc">До 10 000 одновременных сессий. GPU AI processing. Distributed infrastructure. Проверено на национальных экзаменах.</div>
+      </div>
+      <div class="unique-card">
+        <div class="unique-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><path d="M3 21h18"/><path d="M5 21V5a2 2 0 0 1 2-2h7l5 4v14"/><line x1="9" y1="9" x2="9" y2="9.01"/><line x1="9" y1="13" x2="9" y2="13.01"/><line x1="14" y1="13" x2="14" y2="13.01"/><line x1="9" y1="17" x2="9" y2="17.01"/></svg></div>
+        <div class="unique-card-name" data-t="uniq-5">On-Premise</div>
+        <div class="unique-card-desc" data-t="uniq-5-desc">Полное развёртывание на серверах заказчика. Никаких данных за периметром. Соответствие РК и РФ законодательству.</div>
+      </div>
+      <div class="unique-card">
+        <div class="unique-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+        <div class="unique-card-name" data-t="uniq-6">LMS-интеграции</div>
+        <div class="unique-card-desc" data-t="uniq-6-desc">Moodle, Platonus, Hero, REST API. Встраивается в существующую инфраструктуру без замены LMS.</div>
+      </div>
+      <div class="unique-card">
+        <div class="unique-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div class="unique-card-name" data-t="uniq-7">5 протоколов ИБ</div>
+        <div class="unique-card-desc" data-t="uniq-7-desc">Аккредитованная лаборатория РК. Авторское право. Резидент Astana Hub. Юридически защищённый audit trail.</div>
+      </div>
+      <div class="unique-card">
+        <div class="unique-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg></div>
+        <div class="unique-card-name" data-t="uniq-8">Аналитика нарушений</div>
+        <div class="unique-card-desc" data-t="uniq-8-desc">Таймлайн событий, TrustScore™, уровень доверия к результату — проктор видит готовый вердикт, не сырое видео.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CASES
+════════════════════════════════════════════════════════ -->
+<section class="cases-section sec-light" id="cases">
+  <div class="container">
+
+    <div class="sec-head reveal">
+      <div class="label" data-t="cases-label">Кейсы</div>
+      <h2 data-t="cases-title">Как OES работает на практике</h2>
+      <p data-t="cases-subtitle">От государственных экзаменов национального масштаба до корпоративных аттестаций — единая платформа для любого контекста.</p>
+    </div>
+
+    <div class="cases-grid">
+
+      <div class="case-card">
+        <div class="case-card-visual">
+          <div class="case-card-label" data-t="case-1-label">Университет</div>
+          <div class="case-card-metric">AIU</div>
+        </div>
+        <div class="case-card-inner">
+          <div class="case-card-title" data-t="case-1-title">Astana IT University</div>
+          <div class="case-card-desc" data-t="case-1-desc">High-load экзамены с LMS-интеграцией и AI-мониторингом. Полный контроль экзаменационной среды для IT-специальностей с повышенными требованиями к честности результата.</div>
+          <div class="case-card-tags">
+            <span class="case-tag">High-load</span>
+            <span class="case-tag">LMS integration</span>
+            <span class="case-tag">AI-мониторинг</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-visual">
+          <div class="case-card-label" data-t="case-2-label">Государственный</div>
+          <div class="case-card-metric">293K+</div>
+        </div>
+        <div class="case-card-inner">
+          <div class="case-card-title" data-t="case-2-title">Государственные экзамены РК</div>
+          <div class="case-card-desc" data-t="case-2-desc">Массовое тестирование государственного масштаба. 293 000+ абитуриентов в ЕНТ, аттестации МВД, Академия Президента — централизованный контроль и аналитика нарушений.</div>
+          <div class="case-card-tags">
+            <span class="case-tag">293K+ сессий</span>
+            <span class="case-tag">Централизованный контроль</span>
+            <span class="case-tag">On-Premise</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-visual">
+          <div class="case-card-label" data-t="case-3-label">LMS-платформа</div>
+          <div class="case-card-metric">1 day</div>
+        </div>
+        <div class="case-card-inner">
+          <div class="case-card-title" data-t="case-3-title">Moodle / LMS-интеграция</div>
+          <div class="case-card-desc" data-t="case-3-desc">REST API-интеграция с любой LMS. Контроль попыток, передача результатов, аналитика — без замены существующей учебной платформы. Подключение за 1 день.</div>
+          <div class="case-card-tags">
+            <span class="case-tag">REST API</span>
+            <span class="case-tag">Контроль попыток</span>
+            <span class="case-tag">Аналитика</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card-visual">
+          <div class="case-card-label" data-t="case-4-label">Enterprise</div>
+          <div class="case-card-metric">B2B</div>
+        </div>
+        <div class="case-card-inner">
+          <div class="case-card-title" data-t="case-4-title">Корпоративная аттестация</div>
+          <div class="case-card-desc" data-t="case-4-desc">Промсвязьбанк, HR-конфедерация, корпоративные университеты — удалённый контроль аттестаций, сертификаций и онлайн-тестирований с полным audit trail.</div>
+          <div class="case-card-tags">
+            <span class="case-tag">Удалённый контроль</span>
+            <span class="case-tag">Secure environment</span>
+            <span class="case-tag">Audit trail</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     NEWS / INSIGHTS
+════════════════════════════════════════════════════════ -->
+<section class="news-section sec-light" id="news">
+  <div class="container">
+
+    <div class="news-header-row reveal">
+      <div>
+        <div class="label" data-t="news-label">Исследования</div>
+        <h2 data-t="news-title">Новости и инсайты</h2>
+        <p data-t="news-subtitle">Тренды безопасности онлайн-экзаменов, кейсы внедрения, технические разборы.</p>
+      </div>
+      <div class="news-header-actions">
+        <a href="#" class="btn btn-outline news-all-btn" data-t="news-all">Все материалы →</a>
+        <div class="news-slider-nav">
+          <button class="news-nav-btn" id="news-prev" aria-label="Предыдущий">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="news-nav-btn" id="news-next" aria-label="Следующий">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="news-slider-wrap">
+    <div class="news-grid" id="news-grid">
+
+      <div class="news-card">
+        <div class="news-card-header">
+          <div class="nch-terminal">
+            <div class="nch-scan-beam"></div>
+            <div class="nch-proc-list">
+              <div class="nch-proc r1"><span class="nch-pid">4821</span><span class="nch-pname">chatgpt.exe</span><span class="nch-pbadge kill">BLOCKED</span></div>
+              <div class="nch-proc r2"><span class="nch-pid">3044</span><span class="nch-pname">anydesk.exe</span><span class="nch-pbadge kill">KILLED</span></div>
+              <div class="nch-proc r3"><span class="nch-pid">1024</span><span class="nch-pname">oes_guard</span><span class="nch-pbadge ok">ACTIVE</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-tag" data-t="news-tag-1">AI-мошенничество</div>
+          <div class="news-card-title" data-t="news-1-title">Как ChatGPT изменил ландшафт академического мошенничества</div>
+          <div class="news-card-desc" data-t="news-1-desc">AI-ассистенты работают в скрытых процессах. Почему браузерный прокторинг не видит их — и как Desktop-клиент закрывает эту угрозу на уровне RAM.</div>
+          <div class="news-card-meta">
+            <span class="news-card-date">Май 2025</span>
+            <a href="#" class="news-card-link" data-t="news-read">Читать →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-header" style="--card-glow: rgba(99,102,241,0.35)">
+          <div class="nch-shield-wrap">
+            <div class="nch-ring nch-r1"></div>
+            <div class="nch-ring nch-r2"></div>
+            <div class="nch-ring nch-r3"></div>
+            <div class="nch-shield-core"><svg width="20" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <div class="nch-shield-text">OS-LEVEL PROTECTION</div>
+          </div>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-tag" data-t="news-tag-2">Desktop Security</div>
+          <div class="news-card-title" data-t="news-2-title">Desktop vs браузер: в чём разница для безопасности экзамена</div>
+          <div class="news-card-desc" data-t="news-2-desc">Сравнение архитектур: почему OS-level контроль — это не маркетинг, а техническая необходимость для серьёзных экзаменов.</div>
+          <div class="news-card-meta">
+            <span class="news-card-date">Апрель 2025</span>
+            <a href="#" class="news-card-link" data-t="news-read">Читать →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-card-header" style="--card-glow: rgba(16,185,129,0.3)">
+          <div class="nch-sessions">
+            <div class="nch-sess-metric">293<span class="nch-sess-k">K</span></div>
+            <div class="nch-sess-bars">
+              <div class="nch-sbar nch-sb1"></div><div class="nch-sbar nch-sb2"></div><div class="nch-sbar nch-sb3"></div><div class="nch-sbar nch-sb4"></div><div class="nch-sbar nch-sb5"></div><div class="nch-sbar nch-sb6"></div><div class="nch-sbar nch-sb7"></div>
+            </div>
+            <div class="nch-sess-label">CONCURRENT SESSIONS</div>
+          </div>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-tag" data-t="news-tag-3">Кейс</div>
+          <div class="news-card-title" data-t="news-3-title">ЕНТ 2022: как OES выдержал 293 000 одновременных сессий</div>
+          <div class="news-card-desc" data-t="news-3-desc">Технический разбор инфраструктуры национального экзамена: GPU AI processing, distributed deployment и zero downtime под пиковой нагрузкой.</div>
+          <div class="news-card-meta">
+            <span class="news-card-date">Март 2025</span>
+            <a href="#" class="news-card-link" data-t="news-read">Читать →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div><!-- /news-slider-wrap -->
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     TRUST — документы, отзывы, юридическая защита
+════════════════════════════════════════════════════════ -->
+<section class="trust-section sec-dark" id="trust">
+
+  <!-- Animated topographic background (joyjam-inspired waveform) -->
+  <div class="trust-topo" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="none" class="trust-topo-svg">
+      <defs>
+        <linearGradient id="topo-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0"/>
+          <stop offset="50%"  stop-color="#FFFFFF" stop-opacity="0.08"/>
+          <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.05"/>
+        </linearGradient>
+        <linearGradient id="topo-grad-2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.06"/>
+        </linearGradient>
+        <radialGradient id="topo-vignette" cx="50%" cy="50%" r="60%">
+          <stop offset="0%"   stop-color="#070912" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#070912" stop-opacity="0.85"/>
+        </radialGradient>
+      </defs>
+      <g class="trust-topo-lines" stroke="url(#topo-grad)" fill="none" stroke-width="1.1">
+        <path d="M-40,140 Q200,80  440,130 T880,100 T1320,130 T1480,90"  opacity="0.45"/>
+        <path d="M-40,200 Q220,150 460,180 T900,160 T1340,180 T1480,150" opacity="0.55"/>
+        <path d="M-40,260 Q240,210 480,240 T920,220 T1360,240 T1480,210" opacity="0.65"/>
+        <path d="M-40,320 Q260,270 500,300 T940,280 T1380,300 T1480,270" opacity="0.75"/>
+        <path d="M-40,380 Q280,330 520,360 T960,340 T1400,360 T1480,330" opacity="0.85"/>
+        <path d="M-40,440 Q300,400 540,420 T980,400 T1420,420 T1480,400" opacity="0.95"/>
+        <path d="M-40,500 Q320,470 560,480 T1000,460 T1440,480 T1480,470" opacity="0.95"/>
+        <path d="M-40,560 Q340,540 580,540 T1020,520 T1460,540 T1480,540" opacity="0.85"/>
+        <path d="M-40,620 Q360,610 600,600 T1040,580 T1480,600 T1480,610" opacity="0.75"/>
+        <path d="M-40,680 Q380,680 620,660 T1060,640 T1480,660 T1480,680" opacity="0.65"/>
+        <path d="M-40,740 Q400,750 640,720 T1080,700 T1480,720 T1480,750" opacity="0.55"/>
+        <path d="M-40,800 Q420,820 660,780 T1100,760 T1480,780 T1480,820" opacity="0.45"/>
+      </g>
+      <g class="trust-topo-lines trust-topo-lines--2" stroke="url(#topo-grad-2)" fill="none" stroke-width="1.2">
+        <path d="M-40,170 Q210,110 450,150 T890,130 T1330,150 T1480,120"/>
+        <path d="M-40,410 Q290,360 530,390 T970,370 T1410,390 T1480,360"/>
+        <path d="M-40,650 Q370,640 610,620 T1050,600 T1480,620 T1480,640"/>
+      </g>
+      <rect width="1440" height="900" fill="url(#topo-vignette)" pointer-events="none"/>
+    </svg>
+    <div class="trust-topo-glow"></div>
+  </div>
+
+  <div class="container trust-body">
+    <div class="sec-head centered reveal">
+      <div class="label label-dark" data-t="trust-label">Доверие</div>
+      <h2 data-t="trust-title">Каждое заявление подкреплено документально</h2>
+      <p data-t="trust-subtitle">Сертификаты, отзывы заказчиков, юридическая защита и реальные кейсы. Откройте любой раздел — там всё, что нужно для тендера или внутренней проверки.</p>
+    </div>
+
+    <div class="trust-grid reveal">
+
+      <a href="#infosec" class="trust-card">
+        <div class="trust-card-glow"></div>
+        <div class="trust-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="28" height="28"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="trust-card-meta">
+          <div class="trust-card-num"><span class="counter" data-target="5" data-suffix="">0</span></div>
+          <div class="trust-card-num-label" data-t="trust-1-stat">протоколов ИБ РК</div>
+        </div>
+        <h3 class="trust-card-title" data-t="trust-1-title">Сертификаты безопасности</h3>
+        <p class="trust-card-desc" data-t="trust-1-desc">5 протоколов аккредитованной лаборатории ИБ Республики Казахстан. Авторское право, статус резидента Astana Hub, соответствие требованиям госсектора.</p>
+        <div class="trust-card-tags">
+          <span class="trust-tag">Лаборатория ИБ РК</span>
+          <span class="trust-tag">Astana Hub</span>
+          <span class="trust-tag">Авторское право</span>
+        </div>
+        <div class="trust-card-cta" data-t="trust-1-cta">Смотреть протоколы<span class="trust-card-arrow">→</span></div>
+      </a>
+
+      <a href="#cases" class="trust-card">
+        <div class="trust-card-glow"></div>
+        <div class="trust-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="28" height="28"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div class="trust-card-meta">
+          <div class="trust-card-num"><span class="counter" data-target="25" data-suffix="+">0</span></div>
+          <div class="trust-card-num-label" data-t="trust-2-stat">организаций-клиентов</div>
+        </div>
+        <h3 class="trust-card-title" data-t="trust-2-title">Благодарственные письма</h3>
+        <p class="trust-card-desc" data-t="trust-2-desc">Отзывы 25+ организаций: КазТест (НСТ), МВД РК, Astana IT University, BI University, Академия Президента РК, Промсвязьбанк и другие.</p>
+        <div class="trust-card-clients">
+          <span class="trust-client">КазТест</span>
+          <span class="trust-client">МВД РК</span>
+          <span class="trust-client">AITU</span>
+          <span class="trust-client">BI University</span>
+          <span class="trust-client">Promsvyazbank</span>
+          <span class="trust-client trust-client--more">+20</span>
+        </div>
+        <div class="trust-card-cta" data-t="trust-2-cta">Читать отзывы<span class="trust-card-arrow">→</span></div>
+      </a>
+
+      <a href="#cases" class="trust-card">
+        <div class="trust-card-glow"></div>
+        <div class="trust-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="28" height="28"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg>
+        </div>
+        <div class="trust-card-meta">
+          <div class="trust-card-num"><span class="counter" data-target="4" data-suffix="M">0</span></div>
+          <div class="trust-card-num-label" data-t="trust-3-stat">экзаменов проведено</div>
+        </div>
+        <h3 class="trust-card-title" data-t="trust-3-title">Кейсы внедрения</h3>
+        <p class="trust-card-desc" data-t="trust-3-desc">От 293 000 абитуриентов ЕНТ до корпоративных аттестаций. National-scale государственные экзамены, университеты, LMS-интеграции, Enterprise HR.</p>
+        <div class="trust-card-tags">
+          <span class="trust-tag">ЕНТ · 293K</span>
+          <span class="trust-tag">High-load</span>
+          <span class="trust-tag">REST API</span>
+          <span class="trust-tag">Enterprise</span>
+        </div>
+        <div class="trust-card-cta" data-t="trust-3-cta">Изучить кейсы<span class="trust-card-arrow">→</span></div>
+      </a>
+
+      <a href="#infosec" class="trust-card">
+        <div class="trust-card-glow"></div>
+        <div class="trust-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="28" height="28"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div class="trust-card-meta">
+          <div class="trust-card-num">100<span class="trust-card-num-pct">%</span></div>
+          <div class="trust-card-num-label" data-t="trust-4-stat">audit trail coverage</div>
+        </div>
+        <h3 class="trust-card-title" data-t="trust-4-title">Юридическая защита</h3>
+        <p class="trust-card-desc" data-t="trust-4-desc">Audit trail с Sealed-статусом, цифровая подпись проктора, шифрование на уровне сессии. Соответствие Закону РК о ПД и ФЗ-152 (РФ) через On-Premise.</p>
+        <div class="trust-card-trail">
+          <span class="trust-trail-node">Verified</span>
+          <span class="trust-trail-arrow">→</span>
+          <span class="trust-trail-node">Encrypted</span>
+          <span class="trust-trail-arrow">→</span>
+          <span class="trust-trail-node">Signed</span>
+          <span class="trust-trail-arrow">→</span>
+          <span class="trust-trail-node trust-trail-node--sealed">Sealed</span>
+        </div>
+        <div class="trust-card-cta" data-t="trust-4-cta">Изучить защиту<span class="trust-card-arrow">→</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════════════════ -->
+<section class="faq-section sec-light" id="faq">
+  <div class="container">
+
+    <div class="sec-head centered reveal">
+      <div class="label" data-t="faq-label">FAQ</div>
+      <h2 data-t="faq-title">Ответы на ключевые вопросы</h2>
+    </div>
+
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span data-t="faq-1-q">Поддерживает ли OES Windows и macOS?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p data-t="faq-1-a">Да. Desktop-клиент работает на Windows 7, 8, 10, 11 и macOS (Intel и Apple Silicon). Установка занимает 2 минуты без участия IT-специалиста.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span data-t="faq-2-q">Можно ли интегрировать с нашей LMS?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p data-t="faq-2-a">OES интегрируется через REST API с Moodle, Platonus, Hero и любой LMS с открытым API. Интеграция занимает 1 рабочий день. LMS можно не менять.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span data-t="faq-3-q">Есть ли On-Premise развёртывание?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p data-t="faq-3-a">Да, OES разворачивается полностью на серверах заказчика. Никакие данные не покидают периметр организации. Это обеспечивает соответствие законодательству РК о персональных данных и ФЗ-152 (РФ).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span data-t="faq-4-q">Какие нарушения фиксирует система?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p data-t="faq-4-a">40+ категорий: AI-ассистенты в фоне, удалённый доступ (AnyDesk, TeamViewer), виртуальные машины, deepfake-камера, второй монитор, подмена устройства, отсутствие лица, второй человек в кадре, поворот головы, подозрительный звук, переключение окон, копирование/вставка и другие.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span data-t="faq-5-q">Есть ли сертификация по информационной безопасности?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p data-t="faq-5-a">Да. Система OES прошла тестирование в аккредитованной лаборатории информационной безопасности Республики Казахстан. Получены 5 протоколов испытаний по безопасности системы и инфраструктуры.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-trigger">
+          <span data-t="faq-6-q">Выдержит ли платформа массовые экзамены?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p data-t="faq-6-a">Да. Максимальная протестированная нагрузка — 10 000 одновременных сессий. Реальный кейс: ЕНТ 2022, 293 000+ абитуриентов. Distributed infrastructure с GPU AI processing обеспечивает нулевой downtime при пиковых нагрузках.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ROADMAP
+════════════════════════════════════════════════════════ -->
+<section class="roadmap-section sec-light" id="roadmap">
+  <div class="container">
+
+    <div class="sec-head centered reveal">
+      <div class="label" data-t="roadmap-label">Роадмап</div>
+      <h2 data-t="roadmap-title">Платформа, которая растёт вместе с вами</h2>
+      <p data-t="roadmap-subtitle">Enterprise-заказчики принимают решения на 2–3 года. Мы знаем, куда идём.</p>
+    </div>
+
+    <div class="roadmap-grid">
+
+      <div class="module-card">
+        <div class="module-card-overlay">
+          <div class="chip chip-soon" data-t="in-dev">В разработке</div>
+        </div>
+        <div class="module-card-inner">
+          <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><rect x="2" y="6" width="20" height="12" rx="2"/><line x1="6" y1="22" x2="18" y2="22"/><line x1="12" y1="18" x2="12" y2="22"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="module-name" data-t="mod-1-name">ContentProtect</div>
+          <div class="module-desc" data-t="mod-1-desc">Блокировка HDMI/capture cards — контент не утечёт</div>
+        </div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-card-overlay">
+          <div class="chip chip-soon" data-t="in-dev">В разработке</div>
+        </div>
+        <div class="module-card-inner">
+          <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10h-10z" fill="currentColor" fill-opacity="0.18"/><line x1="12" y1="2" x2="12" y2="12"/><line x1="12" y1="12" x2="22" y2="12"/></svg></div>
+          <div class="module-name" data-t="mod-2-name">Integrity Score</div>
+          <div class="module-desc" data-t="mod-2-desc">Цветовая шкала риска сессии без просмотра видео</div>
+        </div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-card-overlay">
+          <div class="chip chip-soon" data-t="in-dev">В разработке</div>
+        </div>
+        <div class="module-card-inner">
+          <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="14" x2="22" y2="14"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="14" x2="4" y2="14"/></svg></div>
+          <div class="module-name" data-t="mod-3-name">AI Risk Score</div>
+          <div class="module-desc" data-t="mod-3-desc">Экспортируемый AI-вердикт, юридически защищённый</div>
+        </div>
+      </div>
+
+      <div class="module-card">
+        <div class="module-card-overlay">
+          <div class="chip chip-soon" data-t="in-dev">В разработке</div>
+        </div>
+        <div class="module-card-inner">
+          <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div>
+          <div class="module-name" data-t="mod-4-name">Behavioral Analytics</div>
+          <div class="module-desc" data-t="mod-4-desc">Аномальные паттерны поведения за рамками явных нарушений</div>
+        </div>
+      </div>
+
+      <div class="module-card module-card--planned">
+        <div class="module-card-overlay">
+          <div class="chip chip-accent" data-t="planned">Запланировано</div>
+        </div>
+        <div class="module-card-inner">
+          <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="24" height="24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="2" y1="13" x2="22" y2="13"/></svg></div>
+          <div class="module-name" data-t="mod-5-name">HR Security Module</div>
+          <div class="module-desc" data-t="mod-5-desc">Безопасные собеседования — дипфейки, наушники, подсказки</div>
+        </div>
+      </div>
+
+      <div class="module-card module-card--note">
+        <div class="module-card-inner module-card-inner--note">
+          <div class="module-note-label" data-t="roadmap-nda-label">Под NDA</div>
+          <div class="module-note-title" data-t="roadmap-nda-title">И ещё несколько модулей в исследовании</div>
+          <div class="module-note-desc" data-t="roadmap-nda-desc">Активная разработка по запросам Enterprise-заказчиков. Детали раскрываем под соглашение о конфиденциальности.</div>
+          <a href="#demo" class="module-note-link" data-t="roadmap-nda-cta">Запросить доступ →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CTA / FORM
+════════════════════════════════════════════════════════ -->
+<section class="cta-section sec-dark" id="demo">
+  <div class="container">
+    <div class="cta-inner">
+
+      <!-- Left -->
+      <div class="cta-info reveal-left">
+        <div class="label label-dark" data-t="cta-label">Начать</div>
+        <h2 data-t="cta-title">Готовы внедрить безопасные онлайн-экзамены?</h2>
+        <p data-t="cta-subtitle">Получите демонстрацию платформы OES и коммерческое предложение под задачи вашей организации.</p>
+        <div class="cta-btn-group">
+          <a href="#demo" class="btn btn-primary" data-t="cta-btn-demo">Получить демо</a>
+          <a href="#" class="btn btn-outline-dark" data-t="cta-btn-kp">Запросить КП</a>
+        </div>
+        <div class="cta-links" style="margin-top: 16px;">
+          <a href="#" class="cta-secondary-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span data-t="cta-link-1">Запросить КП для госорганов</span>
+          </a>
+          <a href="#" class="cta-secondary-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-t="cta-link-2">Скачать презентацию</span>
+          </a>
+          <a href="mailto:info@oes.kz" class="cta-secondary-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-t="cta-link-3">Связаться с нами</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right — form -->
+      <div class="reveal-right">
+        <div class="demo-form">
+          <div class="demo-form-header">
+            <h3 data-t="form-title">Запрос демо</h3>
+            <p data-t="form-subtitle">Ответим в течение 24 часов</p>
+          </div>
+          <form id="demo-form" novalidate>
+
+            <div class="form-group">
+              <label class="form-label" data-t="form-name">Имя</label>
+              <input class="form-input" type="text" required data-t-placeholder="form-name" placeholder="Ваше имя">
+              <div class="form-error">Введите ваше имя</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-t="form-org">Организация</label>
+              <input class="form-input" type="text" required data-t-placeholder="form-org" placeholder="Название организации">
+              <div class="form-error">Введите организацию</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-t="form-email">Email</label>
+              <input class="form-input" type="email" required placeholder="email@company.com">
+              <div class="form-error">Введите корректный email</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-t="form-type">Тип организации</label>
+              <select class="form-select" required>
+                <option value="" disabled selected>Выберите тип</option>
+                <option value="gov" data-t="form-type-gov">Государственный орган</option>
+                <option value="uni" data-t="form-type-uni">Университет</option>
+                <option value="enterprise" data-t="form-type-enterprise">Enterprise</option>
+                <option value="other" data-t="form-type-other">Другое</option>
+              </select>
+              <div class="form-error">Выберите тип организации</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit" data-t="form-submit">
+              Отправить запрос
+            </button>
+            <p class="form-note" data-t="form-note">Ответим в течение 24 часов</p>
+          </form>
+
+          <div class="form-success">
+            <div class="form-success-icon">✓</div>
+            <h3>Запрос отправлен!</h3>
+            <p>Свяжемся в течение 24 часов.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="color: var(--text-on-dark);">
+          <img src="assets/logo.svg" alt="OES" class="nav-logo-img">
+        </div>
+        <p data-t="footer-desc">Платформа безопасных экзаменов национального масштаба.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4 data-t="footer-system">Система</h4>
+          <a href="#ai">AI мониторинг</a>
+          <a href="#desktop">Desktop ПО</a>
+          <a href="#roadmap">Роадмап</a>
+          <a href="about.html">О компании</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-t="footer-security">Безопасность</h4>
+          <a href="#infosec">5 протоколов ИБ</a>
+          <a href="#infosec">On-Premise</a>
+          <a href="#infosec">Закон РК о ПД</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-t="footer-contact">Контакты</h4>
+          <a href="#demo">Получить демо</a>
+          <a href="mailto:info@oes.kz">info@oes.kz</a>
+          <a href="#">Политика конф.</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 OES · Республика Казахстан</p>
+      <div class="footer-bottom-links">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Согласие на обработку ПД</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     Floating consultation widget (fixed bottom-right)
+════════════════════════════════════════════════════════ -->
+<div class="cta-widget" id="cta-widget" data-target="#cta-modal">
+  <button class="cta-widget-trigger" type="button" aria-label="Получить консультацию" aria-haspopup="dialog">
+    <span class="cta-widget-label">Получить консультацию</span>
+    <span class="cta-widget-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+      </svg>
+    </span>
+  </button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     Role selector modal (opens from .cta-widget)
+════════════════════════════════════════════════════════ -->
+<div class="cta-modal" id="cta-modal" role="dialog" aria-modal="true" aria-labelledby="cta-modal-title" hidden>
+  <div class="cta-modal-backdrop" data-close></div>
+  <div class="cta-modal-window">
+    <button class="cta-modal-close" type="button" aria-label="Закрыть" data-close>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+        <line x1="18" y1="6"  x2="6"  y2="18"/>
+        <line x1="6"  y1="6"  x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <div class="cta-modal-head">
+      <div class="cta-modal-eyebrow">Шаг 1 из 2</div>
+      <h3 class="cta-modal-title" id="cta-modal-title">С какой стороны вы подходите к OES?</h3>
+      <p class="cta-modal-sub">Покажем релевантный путь и подходящую форму заявки.</p>
+    </div>
+
+    <div class="cta-modal-cards">
+      <a class="cta-card" href="#demo" data-role="client" data-close>
+        <div class="cta-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+            <path d="M3 21V8l9-5 9 5v13"/>
+            <path d="M9 21v-6h6v6"/>
+            <line x1="3" y1="21" x2="21" y2="21"/>
+          </svg>
+        </div>
+        <div class="cta-card-tag">Для организаций</div>
+        <h4 class="cta-card-title">Я клиент</h4>
+        <p class="cta-card-desc">Образовательное учреждение, государственная организация, корпорация — внедряем OES под ваш масштаб.</p>
+        <span class="cta-card-action">
+          Оставить заявку
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+
+      <a class="cta-card" href="#demo" data-role="user" data-close>
+        <div class="cta-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+            <path d="M22 10v6"/>
+            <path d="M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/>
+          </svg>
+        </div>
+        <div class="cta-card-tag">Для экзаменующихся</div>
+        <h4 class="cta-card-title">Я пользователь</h4>
+        <p class="cta-card-desc">Сдаю экзамен через OES Proctoring — помощь со входом, проверкой техники и поддержкой во время сессии.</p>
+        <span class="cta-card-action">
+          Оставить заявку
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="libs/gsap.min.js"></script>
+<script src="libs/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+
+</body>
+</html>
